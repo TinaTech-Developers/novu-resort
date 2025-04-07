@@ -6,7 +6,6 @@ import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { MdLocationSearching } from "react-icons/md";
 import { ArrowBigLeft } from "lucide-react";
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -80,7 +79,7 @@ function page() {
           />
         </SwiperSlide>
       </Swiper>
-      <div className="m-10 md:mx-20">
+      <div className="pb-10 md:mx-16 text-gray-900">
         <h1 className="text-xl md:text-2xl font-semibold my-4 text-green-950">
           {"  An Adventure Through Zimbabwe's Eastern Highlands"}
         </h1>

@@ -67,7 +67,7 @@ function page() {
           />
         </SwiperSlide> */}
       </Swiper>
-      <div className="m-10 md:mx-20">
+      <div className="pb-10 md:mx-16 ">
         <h1 className="text-xl md:text-2xl font-semibold my-4 text-green-950">
           Thrilling Quad Biking Adventures at Novu Resort
         </h1>

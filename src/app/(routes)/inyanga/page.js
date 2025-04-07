@@ -29,7 +29,7 @@ function page() {
             </p>
           </div>
           <Link
-            href={"/"}
+            href={"/todo"}
             className="flex items-center justify-center gap-1 border px-3 py-2 bg-green-900 text-white"
           >
             <ArrowBigLeft />
@@ -67,13 +67,13 @@ function page() {
           <Images image={"/img_13.jpeg"} />
         </SwiperSlide>
       </Swiper>
-      <div className="m-10 md:mx-20">
+      <div className="pb-10 md:mx-16">
         <h1 className="text-xl md:text-2xl font-semibold my-4 text-green-950">
           {
             " Welcome to Nyanga, one of Zimbabwe's premier tourist destinations."
           }
         </h1>
-        <p>
+        <p className="text-gray-900">
           Nyanga, located in Zimbabwe’s Eastern Highlands, is a captivating
           destination renowned for its stunning landscapes, rich cultural
           heritage, and lush forests. The region’s cool, temperate climate makes
