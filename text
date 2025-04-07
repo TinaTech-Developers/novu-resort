@@ -1,0 +1,196 @@
+// add content management to the following code that works on the period of booking that is if the room is still booked it will not allow another booking to be done. here is the backend api import { NextResponse } from "next/server";
+// import connectMongoDB from "../../../../libs/mongodb";
+// import Reservations from "../../../../models/reservations";
+
+// export async function POST(request) {
+//   const {
+//     fullName,
+//     surname,
+//     address,
+//     country,
+//     city,
+//     email,
+//     arrivaldate,
+//     deptdate,
+//     kidsNo,
+//     adultsNo,
+//     book,
+//     price,
+//     total,
+//   } = await request.json();
+//   await connectMongoDB();
+//   await Reservations.create({
+//     fullName,
+//     surname,
+//     address,
+//     country,
+//     city,
+//     email,
+//     arrivaldate,
+//     deptdate,
+//     kidsNo,
+//     adultsNo,
+//     book,
+//     price,
+//     total,
+//   });
+
+//   return NextResponse.json({ message: "Reservation Created" }, { status: 201 });
+// }
+
+// export async function GET() {
+//   await connectMongoDB();
+//   const reservations = await Reservations.find();
+//   return NextResponse.json({ reservations });
+// }
+
+// export async function DELETE(request) {
+//   const id = request.nextUrl.searchParams.get("id");
+//   await connectMongoDB();
+//   await Reservations.findByIdAndDelete(id);
+//   return NextResponse.json(
+//     { message: "Reservation Successfully Deleted" },
+//     { status: 200 }
+//   );
+// }
+// and the frontend api and code "use client";
+// import React, { useEffect, useState } from "react";
+// import { motion } from "framer-motion";
+// import RoomCard from "./RoomCard";
+
+// function getDate() {
+//   const today = new Date();
+//   const month = today.getMonth() + 1;
+//   const year = today.getFullYear();
+//   const date = today.getDate();
+//   return ${month}/${date}/${year};
+// }
+
+// function ExploreRooms({ heading }) {
+//   let [currentDate, setCurrentDate] = useState(getDate(true));
+//   const ROOM_URL = "/api/rooms";
+//   const datez = [
+//     "01/04/2024",
+//     "01/01/2024",
+//     "02/21/2024",
+//     "04/18/2024",
+//     "05/01/2024",
+//     "05/25/2024",
+//     "12/22/2024",
+//     "12/25/2024",
+//     "12/26/2024",
+//   ];
+
+//   const [rooms, setRooms] = useState([]);
+
+//   useEffect(() => {
+//     async function fetchData() {
+//       const response = await fetch(ROOM_URL);
+//       const rooms = await response.json();
+//       setRooms(rooms.rooms);
+//     }
+//     fetchData();
+//   }, []);
+
+//   return (
+//     <div className="flex flex-col items-center justify-center">
+//       <motion.div
+//         initial={{ y: 100, opacity: 0 }}
+//         whileInView={{ y: 0, opacity: 1 }}
+//         transition={{ duration: 0.7 }}
+//         className="text-4xl font-bold"
+//       >
+//         <div className="flex items-center justify-center gap-2 my-4">
+//           <div className="w-10 h-1 bg-amber-700"></div>
+//           <h1 className="text-lg  uppercase text-amber-700">our rooms</h1>
+//           <div className="w-10 h-1 bg-amber-700"></div>
+//         </div>
+//         {/* <div>
+//           <span className="w-10 h-56 bg-orange-900"></span>
+//         </div> */}
+//         <h className="text-green-950">{heading}</h>
+//       </motion.div>
+//       <div className="flex flex-wrap items-center justify- mx-auto">
+//         {rooms.map((room) => (
+//           <RoomCard key={room._id} room={room} />
+//         ))}
+
+//         {/* <RoomCard /> <RoomCard /> <RoomCard /> */}
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default ExploreRooms;
+// api for booking const handleBook = async (e) => {
+//     e.preventDefault();
+
+//     if (
+//       !fullName ||
+//       !surname ||
+//       !address ||
+//       !city ||
+//       !country ||
+//       !email ||
+//       !arrivaldate ||
+//       !deptdate ||
+//       !kidsNo ||
+//       !adultsNo ||
+//       !book
+//     ) {
+//       // alert("Fill all fields");
+//       toast.error("Fill all fields");
+//       return;
+//     }
+//     try {
+//       const res = await fetch(${API_BASE_URL}/api/reservations, {
+//         method: "POST",
+//         headers: {
+//           "Content-type": "application/json",
+//         },
+//         body: JSON.stringify({
+//           fullName,
+//           surname,
+//           address,
+//           city,
+//           country,
+//           email,
+//           arrivaldate,
+//           deptdate,
+//           kidsNo,
+//           adultsNo,
+//           book,
+//           price,
+//           total,
+//         }),
+//       });
+//       if (res.ok) {
+//         toast.success(
+//           "Your Booking Was Successful, We will respond to your email"
+//         );
+//         calculateDifference();
+//       }
+//     } catch (error) {
+//       console.log("Error ");
+//     }
+//     const onClick = () => {
+//       toast("Your Booking Was Successful, We will respond to your email", {
+//         type: "success",
+//         position: toast.POSITION.TOP_CENTER,
+//       });
+//     };
+//   };
+
+//   useEffect(() => {
+//     if (arrivaldate && deptdate) {
+//       const d1 = new Date(arrivaldate);
+//       const d2 = new Date(deptdate);
+//       const diffTime = Math.abs(d2 - d1);
+//       const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+//       setDifference(diffDays);
+//     } else {
+//       setDifference(null); // Reset difference if dates are not valid
+//     }
+//   }, [arrivaldate, deptdate]); // Dependency array to run effect when dates change
+
+//   console.log(difference);
