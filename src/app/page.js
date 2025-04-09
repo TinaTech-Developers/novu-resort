@@ -1,5 +1,6 @@
 import About from "@/components/About";
 import Adventure from "@/components/Adventure";
+import Adventure2 from "@/components/Adventure2";
 import Discover from "@/components/Discover";
 import ExploreRooms from "@/components/ExploreRooms";
 import Gallery from "@/components/Gallery";
@@ -14,7 +15,8 @@ export default function Home() {
       <Layout>
         <Hero />
         <About />
-        <Adventure />
+        <Adventure2 />
+        {/* <Adventure /> */}
         <Discover />
         <ExploreRooms heading={"Explore Our Apartments"} />
         <Services />

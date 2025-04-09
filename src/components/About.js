@@ -15,7 +15,7 @@ function About() {
   }, []);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 py-14 bg-white px-10">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 pb-14 bg-white md:pt-10 px-10">
       <div className="col-span-1 px-10 md:px-20">
         <motion.div
           initial={{ y: -100, opacity: 0 }}

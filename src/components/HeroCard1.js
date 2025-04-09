@@ -10,7 +10,7 @@ function HeroCard1({ text, head }) {
 
   return (
     <div className="bg-scroll bg-[url('/booadroom.jpg')] bg-cover bg-no-repeat w-sreen  h-full">
-      <div className="bg-scroll bg-black bg-opacity-70 h-[800px]">
+      <div className="bg-scroll bg-black bg-opacity-70 h-[35rem">
         <div className="px-6 translate-y-48 md:translate-y-64 md:translate-x-[17%] ">
           <motion.div
             initial={{ y: -100, opacity: 0 }}

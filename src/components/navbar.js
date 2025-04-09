@@ -8,7 +8,7 @@ function Navbar() {
   const links = [
     { name: "Home", link: "/" },
     { name: "Accommodation", link: "/rooms" },
-    { name: "Activities", link: "/todo" },
+    { name: "Activities", link: "/activities" },
     { name: "About", link: "/about" },
     { name: "Contact", link: "/contact" },
   ];
@@ -53,7 +53,10 @@ function Navbar() {
           }`}
         >
           {links.map((link) => (
-            <li key={link.name} className="md:pr-8 text-base md:my-0 my-4">
+            <li
+              key={link.name}
+              className="md:pr-8 text-base uppercase md:my-0 my-4"
+            >
               <Link href={link.link} passHref>
                 <span className="group text-white">
                   {link.name}

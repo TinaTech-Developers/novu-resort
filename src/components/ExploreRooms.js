@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import RoomCard from "./RoomCard";
+import Apartments from "./Apartments";
 
 function getDate() {
   const today = new Date();
@@ -12,27 +13,13 @@ function getDate() {
 }
 
 function ExploreRooms({ heading }) {
-  let [currentDate, setCurrentDate] = useState(getDate(true));
-  const ROOM_URL = "/api/rooms";
-
-  const [rooms, setRooms] = useState([]);
-
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(ROOM_URL);
-      const rooms = await response.json();
-      setRooms(rooms.rooms);
-    }
-    fetchData();
-  }, []);
-
   return (
-    <div className="flex flex-col items-center justify-center bg-white">
+    <div className="flex flex-col items-center justify-center bg-white md:mt-12">
       <motion.div
         initial={{ y: 100, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7 }}
-        className="text-2xl md:text-4xl font-nono text-center md:mb-12"
+        className="text-2xl md:text-4xl font-nono text-center md:mb-8"
       >
         <div className="flex items-center justify-center gap-2 my-4">
           <div className="w-10 h-1 bg-amber-700"></div>
@@ -41,11 +28,12 @@ function ExploreRooms({ heading }) {
         </div>
         <h className="text-green-950 text-2xl md:text-3xl ">{heading}</h>
       </motion.div>
-      <div className="flex flex-col w-full items-center justify- mx-auto">
+      <Apartments />
+      {/* <div className="flex flex-col w-full items-center justify- mx-auto">
         {rooms.map((room) => (
           <RoomCard key={room._id} room={room} />
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }
