@@ -6,7 +6,6 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import HeroCard from "./HeroCard";
-import Inquiry from "./Inquiry";
 import HeroCard1 from "./HeroCard1";
 import HeroCardHome from "./HeroCardHome";
 
@@ -19,7 +18,7 @@ export default function Hero() {
       <Swiper
         centeredSlides={true}
         autoplay={{
-          delay: 30000,
+          delay: 80000,
           disableOnInteraction: false,
         }}
         modules={[Autoplay, Pagination, Navigation]}

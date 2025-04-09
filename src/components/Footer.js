@@ -71,7 +71,7 @@ function Footer() {
           {/* <p>Email: info@tinasoftnexus.co.zw</p> */}
         </div>
       </div>
-      <hr className=" w-[90%] mx-auto -translate-y-10" />
+      {/* <hr className=" w-[90%] mx-auto -translate-y-10" /> */}
 
       <div className="flex items-center justify-center w-full h-10 bg-gray-900">
         <p className="text-white text-sm">
