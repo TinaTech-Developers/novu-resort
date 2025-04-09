@@ -19,7 +19,7 @@ function Adventure2() {
           </h1>
           <div className="w-10 h-1 bg-amber-700"></div>
         </div>
-        <h className="text-green-950">Exciting Journey</h>
+        <h1 className="text-green-950">Exciting Journey</h1>
       </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-2">
@@ -78,16 +78,12 @@ function Adventure2() {
           className="col-span-1 bg-[#06402B] text-white md:p-10"
         >
           <h1 className="text-xl font-semibold uppercase hover:text-green-600 py-4 hover:underline">
-            An Adventure Through Zimbabwe's Eastern Highlands
+            {`An Adventure Through Zimbabwe's Eastern Highlands `}
           </h1>
           <p className="text-white text-sm">
-            Zimbabwe's Eastern Highlands offers a stunning adventure with its
-            misty Bvumba Mountains, dramatic waterfalls in Nyanga National Park,
-            and the challenging ascent of Mount Nyangani. The region is rich in
-            biodiversity, culture, and history, featuring picturesque trails,
-            local villages, and ancient ruins. Whether trekking, birdwatching,
-            or exploring, it’s a hidden gem for outdoor lovers and culture
-            seekers alike.
+            {
+              "Zimbabwe's Eastern Highlands offers a stunning adventure with its misty Bvumba Mountains, dramatic waterfalls in Nyanga National Park, and the challenging ascent of Mount Nyangani. The region is rich in biodiversity, culture, and history, featuring picturesque trails, local villages, and ancient ruins. Whether trekking, birdwatching, or exploring, it’s a hidden gem for outdoor lovers and culture seekers alike."
+            }
           </p>
           <div className="my-4">
             <FillButton name={"Explore More!"} link={"/activities"} />
@@ -164,7 +160,7 @@ function Adventure2() {
             skills and bravery. Alternatively, opt for the easy route, perfect
             for beginners or those seeking a more relaxed experience, featuring
             scenic paths and gentle slopes that still offer stunning views of
-            the surrounding landscape. Whether you’re seeking thrills or a
+            the surrounding landscape. Whether you are seeking thrills or a
             leisurely ride, Novu Resort has the perfect quad biking adventure
             for you!
           </p>
