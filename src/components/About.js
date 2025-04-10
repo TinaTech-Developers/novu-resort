@@ -28,7 +28,7 @@ function About() {
             <div className="w-10 h-[2px] bg-amber-700"></div>
           </div>
 
-          <h1 className="text-2xl md:text-3xl md:mb-4 text-green-950 uppercase font-semibold">
+          <h1 className="text-2xl md:text-3xl mb-4 text-green-950 uppercase font-semibold">
             Stay with Us and Create Memorable Moments
           </h1>
         </motion.div>
@@ -63,7 +63,7 @@ function About() {
         initial={{ y: 100, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7 }}
-        className="col-span-1 flex flex-col items-center justify-center  md:px-20 my-4 border-2 border-green-900"
+        className="col-span-1 flex flex-col items-center justify-center  md:px-20 my-4 border-2 border-green-900 py-4 md:py-8"
       >
         <video
           ref={videoRef}

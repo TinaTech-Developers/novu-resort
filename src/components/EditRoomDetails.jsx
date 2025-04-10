@@ -185,10 +185,12 @@ function EditRoomDetails({
   console.log(difference);
 
   return (
-    <div className="mt-28 m-5">
+    <div className="md:mt-36 py-5 mt-28 m-5">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl md:text-3xl font-semibold">Laxury Room</h1>
+          <h1 className="text-2xl md:text-3xl font-semibold text-green-950">
+            Laxury Room
+          </h1>
           <p className="flex items-center gap-5 text-gray-600">
             <MdLocationSearching size={28} color="red" />
             Inyanga, Zimbabwe
@@ -203,8 +205,8 @@ function EditRoomDetails({
         </Link>
       </div>
       <hr className="w-[100%] px-4 mx-auto my-4" />
-      <div className="grid grid-cols-1 md:grid-cols-5 mt-5">
-        <div className="col-span-1 md:col-span-3 border">
+      <div className=" w-[100%] grid grid-cols-1 md:grid-cols-5 mt-5 mx-auto px-5">
+        <div className="col-span-1 md:col-span-3 border left-0">
           <Swiper
             // install Swiper modules
             modules={[Navigation, Pagination, Scrollbar, A11y]}

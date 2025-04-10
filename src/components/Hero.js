@@ -28,23 +28,32 @@ export default function Hero() {
         <SwiperSlide>
           <HeroCardHome
             head={"Best of The Bests"}
-            text={"Welcome To Our Luxury Villas"}
+            text={"Welcome To Our Luxury Resort"}
             text1={"Click The Button Below for Bookings"}
           />
         </SwiperSlide>
         <SwiperSlide>
           <HeroCardz
-            image={"/booadroom.jpg"}
+            image={"/Dove ext 1-8829.jpg"}
             head={"Best of The Bests"}
-            text={"Welcome To Our Luxury Villas"}
+            text={"A must visit place"}
+            text1={"Click The Button Below for Bookings"}
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <HeroCardz
+            image={"/Guinea fowl Lounge with fire place.jpg"}
+            head={"Best of The Bests"}
+            text={"Elegant, cozy, and refined comfort."}
             text1={"Click The Button Below for Bookings"}
           />
         </SwiperSlide>
 
         <SwiperSlide>
-          <HeroCard
+          <HeroCardz
+            image={"/booadroom.jpg"}
             head={"Best of The Bests"}
-            text={"Welcome To Our Luxury Villas"}
+            text={"Conference Room"}
             text1={"Click The Button Below for Bookings"}
           />
         </SwiperSlide>

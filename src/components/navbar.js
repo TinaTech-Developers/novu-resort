@@ -11,6 +11,7 @@ function Navbar() {
     { name: "Activities", link: "/activities" },
     { name: "About", link: "/about" },
     { name: "Contact", link: "/contact" },
+    { name: "apartments", link: "/apartments" },
   ];
 
   const [open, setOpen] = useState(false);

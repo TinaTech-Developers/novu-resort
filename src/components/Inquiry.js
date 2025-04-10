@@ -4,7 +4,7 @@ import Link from "next/link";
 
 function Inquiry() {
   return (
-    <div className=" grid grid-cols-1 md:grid-cols-5 w-[90%]  md:h-24 h-full gap-4  bg-white shadow-2xl mx-auto -translate-y-16 -z-50">
+    <div className=" grid grid-cols-1 md:grid-cols-5 w-[90%]  md:h-24 h-full gap-4  bg-white shadow-2xl mx-auto -translate-y-16 -z-50 border-green-950 border">
       <div className="col-span-1 mx-auto ">
         <input
           placeholder="Full Name"

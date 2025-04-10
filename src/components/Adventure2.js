@@ -76,7 +76,7 @@ function Adventure2() {
           initial={{ y: 100, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.7 }}
-          className="col-span-1 bg-[#06402B] text-white md:p-10 order-2 md:order-1"
+          className="col-span-1 bg-[#06402B] text-white md:p-10 order-2 md:order-1 p-3"
         >
           <h1 className="text-xl font-semibold uppercase hover:text-green-600 py-4 hover:underline">
             {`An Adventure Through Zimbabwe's Eastern Highlands `}
