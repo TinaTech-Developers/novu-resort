@@ -185,7 +185,7 @@ function EditRoomDetails({
   console.log(difference);
 
   return (
-    <div className="md:mt-36 py-5 mt-28 m-5">
+    <div className="md:mt-36 py-5 mt-28 p-5">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl md:text-3xl font-semibold text-green-950">
@@ -266,13 +266,13 @@ function EditRoomDetails({
             />
           </div>
           <div className="border p-5 ">
-            <h1 className="text-2xl font-semibold capitalize">
+            <h1 className="text-2xl font-semibold uppercase text-green-950">
               Room description
             </h1>
-            <p>{name}</p>
-            <p className="text-gray-500 font-normal">{description}</p>
+            <p className="text-green-700">{name}</p>
+            <p className="text-gray-800 font-normal">{description}</p>
             <hr className="my-4" />
-            <div className="font-normal">
+            <div className="font-normal text-gray-800">
               <h2 className="text-xl font-normal">About room</h2>
 
               <div className="grid grid-cols-3 mt-5">
@@ -289,7 +289,7 @@ function EditRoomDetails({
             </div>
             <hr className="my-4" />
 
-            <div className="text-sm font-normal">
+            <div className="text-sm font-normal text-gray-800">
               <h1 className="my-4 font-bold ">Notes</h1>
               <div className="text-sm">
                 <h2 className="font-semibold">Inclusions</h2>
@@ -365,7 +365,7 @@ function EditRoomDetails({
                     type="text"
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
-                    className="input input-bordered w-full"
+                    className="input input-bordered w-full bg-gray-300 text-black"
                   />
                 </div>
                 <div className="col-span-1 py-1">
@@ -377,7 +377,7 @@ function EditRoomDetails({
                     type="text"
                     value={surname}
                     onChange={(e) => setSurname(e.target.value)}
-                    className="input input-bordered w-full"
+                    className="input input-bordered w-full bg-gray-300 text-black"
                   />
                 </div>
               </div>
@@ -390,7 +390,7 @@ function EditRoomDetails({
                   type="text"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
-                  className="input input-bordered w-full"
+                  className="input input-bordered w-full bg-gray-300 text-black"
                 />
               </div>
               <div className="fex flex-wrap md:grid md:grid-cols-2 gap-2">
@@ -403,7 +403,7 @@ function EditRoomDetails({
                     type="text"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
-                    className="input input-bordered w-full"
+                    className="input input-bordered w-full bg-gray-300 text-black"
                   />
                 </div>
                 <div className="col-span-1 py-1">
@@ -415,7 +415,7 @@ function EditRoomDetails({
                     type="text"
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
-                    className="input input-bordered w-full"
+                    className="input input-bordered w-full bg-gray-300 text-black"
                   />
                 </div>
               </div>
@@ -428,7 +428,7 @@ function EditRoomDetails({
                   placeholder="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="input input-bordered w-full"
+                  className="input input-bordered w-full bg-gray-300 text-black"
                 />
               </div>
               <div className="fex flex-wrap md:grid md:grid-cols-2 gap-2">
@@ -441,7 +441,7 @@ function EditRoomDetails({
                     onChange={(e) => setArrivaldate(e.target.value)}
                     type="datetime-local"
                     name="arrivaldate"
-                    className="input input-bordered w-full"
+                    className="input input-bordered w-full bg-gray-300 text-black"
                   />
                 </div>
                 <div className="col-span-1 py-1">
@@ -453,7 +453,7 @@ function EditRoomDetails({
                     onChange={(e) => setDeptdate(e.target.value)}
                     type="datetime-local"
                     name="deptdate"
-                    className="input input-bordered w-full"
+                    className="input input-bordered w-full bg-gray-300 text-black"
                   />
                 </div>
               </div>
@@ -467,7 +467,7 @@ function EditRoomDetails({
                     onChange={(e) => setAdultsNo(e.target.value)}
                     type="text"
                     name="adults"
-                    className="input input-bordered w-full"
+                    className="input input-bordered w-full bg-gray-300 text-black"
                   />
                 </div>
                 <div className="col-span-1 py-1">
@@ -480,7 +480,7 @@ function EditRoomDetails({
                     onChange={(e) => setKidsNo(e.target.value)}
                     type="text"
                     name="kids"
-                    className="input input-bordered w-full"
+                    className="input input-bordered w-full bg-gray-300 text-black"
                   />
                 </div>
               </div>

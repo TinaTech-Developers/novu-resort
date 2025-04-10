@@ -13,8 +13,8 @@ function Rooms() {
       <SubHero head={"Our Laxurious Rooms"} />
       <Inquiry />
       <MiniHeader />
-      {/* <ExploreRooms heading={"Choose from Laxurious Rooms"} /> */}
-      <ExecutiveBeds />
+
+      {/* <ExecutiveBeds /> */}
     </Layout>
   );
 }

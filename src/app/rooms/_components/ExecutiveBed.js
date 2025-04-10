@@ -43,7 +43,7 @@ const StyledSwiper = styled(Swiper)`
   padding-bottom: 40px; /* Adjust based on the pagination height */
 `;
 
-function TwoBeds() {
+function ExecutiveBeds() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [rooms, setRooms] = useState([]); // Store fetched room data
 
@@ -86,7 +86,7 @@ function TwoBeds() {
         {/* Map through rooms and display each room */}
         {rooms.map((room) => (
           <SwiperSlide key={room._id}>
-            <TwoBedsCard room={room} />
+            <ExecutiveBedsCard room={room} />
           </SwiperSlide>
         ))}
       </StyledSwiper>
@@ -96,7 +96,7 @@ function TwoBeds() {
   );
 }
 
-function TwoBedsCard({ room }) {
+function ExecutiveBedsCard({ room }) {
   if (!room) {
     return null; // Make sure the room exists before rendering
   }
@@ -176,4 +176,4 @@ function TwoBedsCard({ room }) {
   );
 }
 
-export default TwoBeds;
+export default ExecutiveBeds;

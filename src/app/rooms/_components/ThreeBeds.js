@@ -43,7 +43,7 @@ const StyledSwiper = styled(Swiper)`
   padding-bottom: 40px; /* Adjust based on the pagination height */
 `;
 
-function TwoBeds() {
+function ThreeBeds() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [rooms, setRooms] = useState([]); // Store fetched room data
 
@@ -62,7 +62,11 @@ function TwoBeds() {
   }, []);
 
   if (!rooms || rooms.length === 0) {
-    return <div>No rooms available</div>;
+    return (
+      <div className="flex items-center justify-center mx-auto">
+        No rooms available
+      </div>
+    );
   }
 
   return (
@@ -86,7 +90,7 @@ function TwoBeds() {
         {/* Map through rooms and display each room */}
         {rooms.map((room) => (
           <SwiperSlide key={room._id}>
-            <TwoBedsCard room={room} />
+            <ThreeBedsCard room={room} />
           </SwiperSlide>
         ))}
       </StyledSwiper>
@@ -96,7 +100,7 @@ function TwoBeds() {
   );
 }
 
-function TwoBedsCard({ room }) {
+function ThreeBedsCard({ room }) {
   if (!room) {
     return null; // Make sure the room exists before rendering
   }
@@ -176,4 +180,4 @@ function TwoBedsCard({ room }) {
   );
 }
 
-export default TwoBeds;
+export default ThreeBeds;
