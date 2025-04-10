@@ -225,3 +225,15 @@
 
 // on booking
 // also send email to notify the booking -----98
+
+// echo "# novu-resort" >> README.md
+// git init
+// git add README.md
+// git commit -m "first commit"
+// git branch -M main
+// git remote add origin https://github.com/TinaTech-Developers/novu-resort.git
+// git push -u origin main
+
+// git remote add origin https://github.com/TinaTech-Developers/novu-resort.git
+// git branch -M main
+// git push -u origin main

@@ -16,7 +16,7 @@ function About() {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 pb-14 bg-white md:pt-10 px-10">
-      <div className="col-span-1 px-10 md:px-20">
+      <div className="col-span-1 md:px-20">
         <motion.div
           initial={{ y: -100, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -63,7 +63,7 @@ function About() {
         initial={{ y: 100, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7 }}
-        className="col-span-1 flex flex-col items-center justify-center p-10 md:px-20 my-4 border-2 border-green-900"
+        className="col-span-1 flex flex-col items-center justify-center  md:px-20 my-4 border-2 border-green-900"
       >
         <video
           ref={videoRef}
