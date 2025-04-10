@@ -8,6 +8,7 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import HeroCard from "./HeroCard";
 import HeroCard1 from "./HeroCard1";
 import HeroCardHome from "./HeroCardHome";
+import HeroCardz from "./HeroCardz";
 
 export default function Hero() {
   const progressCircle = useRef(null);
@@ -31,6 +32,15 @@ export default function Hero() {
             text1={"Click The Button Below for Bookings"}
           />
         </SwiperSlide>
+        <SwiperSlide>
+          <HeroCardz
+            image={"/booadroom.jpg"}
+            head={"Best of The Bests"}
+            text={"Welcome To Our Luxury Villas"}
+            text1={"Click The Button Below for Bookings"}
+          />
+        </SwiperSlide>
+
         <SwiperSlide>
           <HeroCard
             head={"Best of The Bests"}

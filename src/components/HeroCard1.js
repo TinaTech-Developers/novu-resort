@@ -1,22 +1,20 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-
 import Typewriter from "typewriter-effect";
 
 function HeroCard1({ text, head }) {
-  //   let text = "Welcome To Our Luxury Villas";
-  //   let text1 = "Click The Button Below for Bookings";
-
   return (
-    <div className="bg-scroll bg-[url('/booadroom.jpg')] bg-cover bg-no-repeat w-sreen  h-full">
-      <div className="bg-scroll bg-black bg-opacity-70 h-[35rem">
-        <div className="px-6 translate-y-48 md:translate-y-64 md:translate-x-[17%] ">
+    <div className="bg-cover bg-no-repeat bg-center bg-[url('/booadroom.jpg')] w-screen h-[70vh] md:h-[35rem]">
+      {/* Overlay with flex to center content */}
+      <div className="bg-black bg-opacity-70 w-full h-full flex items-center justify-center">
+        {/* Centered Content Block */}
+        <div className="px-6 md:pl-36">
           <motion.div
             initial={{ y: -100, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.7 }}
-            className="text-white  w-80 md:w-[60%]"
+            className="text-white w-80 md:w-[60%]"
           >
             <div className="flex items-center gap-2 my-4 justify-center">
               <div className="w-10 h-1 bg-orange-400"></div>
@@ -26,10 +24,10 @@ function HeroCard1({ text, head }) {
             <div>
               <span className="w-10 h-56 bg-blue-900"></span>
             </div>
-            <h1 className="  text-white uppercase text-3xl md:text-4xl font-bold  text-center">
+            <h1 className="text-white uppercase text-3xl md:text-4xl font-bold text-center">
               {head}
             </h1>
-            <div className="text-xl  text-center font-light  text-white mt-4">
+            <div className="text-xl text-center font-light text-white mt-4">
               <Typewriter
                 options={{
                   autoStart: true,
