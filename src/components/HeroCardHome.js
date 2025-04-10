@@ -16,7 +16,7 @@ function HeroCardHome({ text, head }) {
   }, []);
 
   return (
-    <div className="relative w-full h-screen">
+    <div className="relative w-full h-[70vh] md:h-screen">
       {/* Video Background */}
       <video
         ref={videoRef}
