@@ -4,7 +4,7 @@ import FillButton from "./FillButton";
 
 function Discover() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 md:mt-20">
+    <div className="grid grid-cols-1 md:grid-cols-2 md:mt-20 mt-8">
       <div className="col-span-1 text-white p-10 bg-[#06402B]">
         <div className="flex items-center  gap-2 my-4">
           <h1 className="text-lg  uppercase text-amber-700">our rooms</h1>

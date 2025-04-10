@@ -52,7 +52,7 @@ function Adventure2() {
           initial={{ y: 100, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.7 }}
-          className="col-span-1 bg-[#06402B] text-white md:p-10"
+          className="col-span-1 bg-[#06402B] text-white md:p-10 p-3"
         >
           <h1 className="text-xl font-semibold uppercase hover:text-green-600 py-4 hover:underline">
             Welcome to Nyanga, a Leading Tourist Resort Destination in Zimbabwe
@@ -71,11 +71,12 @@ function Adventure2() {
         </motion.div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 mt-5 md:mt-0">
+        {/* First Section */}
         <motion.div
           initial={{ y: 100, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.7 }}
-          className="col-span-1 bg-[#06402B] text-white md:p-10"
+          className="col-span-1 bg-[#06402B] text-white md:p-10 order-2 md:order-1"
         >
           <h1 className="text-xl font-semibold uppercase hover:text-green-600 py-4 hover:underline">
             {`An Adventure Through Zimbabwe's Eastern Highlands `}
@@ -90,6 +91,7 @@ function Adventure2() {
           </div>
         </motion.div>
 
+        {/* Second Section */}
         <motion.div
           initial={{
             opacity: 0,
@@ -102,7 +104,7 @@ function Adventure2() {
             x: 0,
           }}
           transition={{ duration: 0.9 }}
-          className="col-span-1 border-2 border-[#06402B] md:px-10"
+          className="col-span-1 border-2 border-[#06402B] md:px-10 order-1 md:order-2"
         >
           <Video
             video={
@@ -112,6 +114,7 @@ function Adventure2() {
           />
         </motion.div>
       </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 mt-5 md:mt-0">
         <motion.div
           initial={{
@@ -143,7 +146,7 @@ function Adventure2() {
           initial={{ y: 100, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.7 }}
-          className="col-span-1 bg-[#06402B] text-white md:p-10"
+          className="col-span-1 bg-[#06402B] text-white md:p-10 p-3"
         >
           <h1 className="text-xl font-semibold uppercase hover:text-green-600 py-4 hover:underline">
             Thrilling Quad Biking Adventures at Novu Resort
