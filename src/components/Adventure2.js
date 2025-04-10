@@ -5,7 +5,7 @@ import Video from "./Video";
 import FillButton from "./FillButton";
 function Adventure2() {
   return (
-    <div className="flex flex-col items-center justify-centerw-full px-10 ">
+    <div className="flex flex-col items-center justify-center w-full md:px-10 px-5 ">
       <motion.div
         initial={{ y: 100, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
@@ -22,7 +22,7 @@ function Adventure2() {
         <h1 className="text-green-950">Exciting Journey</h1>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 mt-5 md:mt-0">
         <motion.div
           initial={{
             opacity: 0,
@@ -70,7 +70,7 @@ function Adventure2() {
           </div>
         </motion.div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 mt-5 md:mt-0">
         <motion.div
           initial={{ y: 100, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -89,6 +89,7 @@ function Adventure2() {
             <FillButton name={"Explore More!"} link={"/activities"} />
           </div>
         </motion.div>
+
         <motion.div
           initial={{
             opacity: 0,
@@ -100,11 +101,6 @@ function Adventure2() {
             scale: 1,
             x: 0,
           }}
-          // whileHover={{
-          //   // scale: 1.1,
-          //   backgroundColor: "#06402B",
-          //   color: "white",
-          // }}
           transition={{ duration: 0.9 }}
           className="col-span-1 border-2 border-[#06402B] md:px-10"
         >
@@ -116,7 +112,7 @@ function Adventure2() {
           />
         </motion.div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 mt-5 md:mt-0">
         <motion.div
           initial={{
             opacity: 0,
