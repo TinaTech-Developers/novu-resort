@@ -101,9 +101,9 @@ function Contact() {
           className="w-96 md:w-[500px]"
         />
         <p className="py-4 text-start text-black w-96 md:w-[500px]">
-          Any questions pertaining to the resort would be appreciated along with
+          {`Any questions pertaining to the resort would be appreciated along with
           any queries and comments. We look forward to hearing from you. After
-          all, it's your input that makes our little paradise possible.
+          all, it's your input that makes our little paradise possible.`}
         </p>
       </div>
     </div>
