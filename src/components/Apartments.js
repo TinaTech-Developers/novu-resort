@@ -12,7 +12,7 @@ function Apartments() {
         description={
           "Executive beds in hotels are large, comfortable beds with luxury features, often found in premium rooms for an enhanced guest experience."
         }
-        link={"/"}
+        link={"/rooms#executive"}
       />
       <ApartmentsCard
         image={"/apartments/IMG_8993.JPG"}
@@ -20,7 +20,7 @@ function Apartments() {
         description={
           "Executive beds in hotels are large, comfortable beds with luxury features, often found in premium rooms for an enhanced guest experience."
         }
-        link={"/"}
+        link={"/rooms#two"}
       />
       <ApartmentsCard
         image={"/apartments/IMG_8993.JPG"}
@@ -28,7 +28,7 @@ function Apartments() {
         description={
           "Executive beds in hotels are large, comfortable beds with luxury features, often found in premium rooms for an enhanced guest experience."
         }
-        link={"/"}
+        link={"/rooms#three"}
       />
     </div>
   );
