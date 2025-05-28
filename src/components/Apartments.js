@@ -15,18 +15,18 @@ function Apartments() {
         link={"/rooms#executive"}
       />
       <ApartmentsCard
-        image={"/apartments/IMG_8993.JPG"}
+        image={"/apartments/TwoBeds.JPG"}
         heading={" 2 Beds"}
         description={
-          "Executive beds in hotels are large, comfortable beds with luxury features, often found in premium rooms for an enhanced guest experience."
+          "A stylish apartment at Novu Resort featuring two comfortable beds, perfect for couples or small families. Enjoy full access to the resort’s pools, dining, and wellness facilities."
         }
         link={"/rooms#two"}
       />
       <ApartmentsCard
-        image={"/apartments/IMG_8993.JPG"}
+        image={"/apartments/IMG-20241124-WA0055.jpg"}
         heading={" 3 Beds"}
         description={
-          "Executive beds in hotels are large, comfortable beds with luxury features, often found in premium rooms for an enhanced guest experience."
+          "Got it! Here's a revised version for a three-bed apartment at Novu Resort: A contemporary apartment at Novu Resort featuring three cozy beds, ideal for small families or groups seeking comfort and convenience. Guests enjoy full access to the resort’s pools, dining, and wellness amenities."
         }
         link={"/rooms#three"}
       />
@@ -48,7 +48,7 @@ function ApartmentsCard({ image, link, heading, description }) {
         opacity: 1,
       }}
       transition={{ duration: 0.8 }}
-      className=" flex flex-col items-cente justify-start h-[28rem] w-80 md:w-96 border border-[#06402B] shadow-2xl"
+      className=" flex flex-col items-cente justify-start h-[30rem] w-80 md:w-96 border border-[#06402B] shadow-2xl"
     >
       <Image
         src={image}

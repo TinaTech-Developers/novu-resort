@@ -44,40 +44,43 @@ function MiniHeader() {
   }
 
   return (
-    <div className="pb-10 mt-10 text-green-950">
-      <h1 className="px-4 my-10 text-xl md:text-4xl font-bold">
-        Explore Our Apartments
-      </h1>
+    <div className="flex flex-col  pb-10 mt-10 text-green-950">
+      <div className="flex flex-col justify-center items-center gap-4 mb-6">
+        <h1 className="px-4 my- text-xl md:text-4xl font-bold">
+          Explore Our Apartments
+        </h1>
 
-      {/* Toggle Buttons */}
-      <div className="grid md:flex items-start gap-6 mt-2 cursor-pointer list-none px-4">
-        <Link
-          onClick={(e) => updateToggle(1, e)}
-          href="#executive"
-          className="uppercase hover:bg-green-700 focus:bg-green-700 mx-1 text-white border border-green-600 bg-green-950 px-4 py-2 rounded-lg"
-        >
-          Executive Beds
-        </Link>
-        <Link
-          onClick={(e) => updateToggle(2, e)}
-          href="#two"
-          className="uppercase hover:bg-green-700 focus:bg-green-700 mx-1 text-white border border-green-600 bg-green-950 px-4 py-2 rounded-lg"
-        >
-          TWO BEDS
-        </Link>
-        <Link
-          onClick={(e) => updateToggle(3, e)}
-          href="#three"
-          className="uppercase hover:bg-green-700 focus:bg-green-700 mx-1 text-white border border-green-600 bg-green-950 px-4 py-2 rounded-lg"
-        >
-          THREE BEDS
-        </Link>
+        {/* Toggle Buttons */}
+        <div className="grid md:flex items-start gap-6 mt-2 cursor-pointer list-none px-4">
+          <Link
+            onClick={(e) => updateToggle(1, e)}
+            href="#executive"
+            className="uppercase text- hover:bg-green-700 focus:bg-green-700 mx-1 text-white border border-green-600 bg-green-950 px-4 py-2 rounded-lg"
+          >
+            Executive Beds
+          </Link>
+          <Link
+            onClick={(e) => updateToggle(2, e)}
+            href="#two"
+            className="uppercase text- hover:bg-green-700 focus:bg-green-700 mx-1 text-white border border-green-600 bg-green-950 px-4 py-2 rounded-lg"
+          >
+            TWO BEDS
+          </Link>
+          <Link
+            onClick={(e) => updateToggle(3, e)}
+            href="#three"
+            className="uppercase text- hover:bg-green-700 focus:bg-green-700 mx-1 text-white border border-green-600 bg-green-950 px-4 py-2 rounded-lg"
+          >
+            THREE BEDS
+          </Link>
+        </div>
       </div>
-
       {/* Sections */}
       <div className="p-6 mx-0">
         <div id="executive" className={toggle == 1 ? "block" : "hidden"}>
-          <h1 className="text-xl font-semibold mb-10">EXECUTIVE BEDS</h1>
+          <h1 className="text-xl font-semibold mb-10 text-center">
+            EXECUTIVE BEDS
+          </h1>
           <ExecutiveBeds />
           <div className="text-gray-800">
             <h1 className="text-xl md:text-2xl py-2 text-green-950 font-semibold">
@@ -88,7 +91,7 @@ function MiniHeader() {
         </div>
 
         <div id="two" className={toggle == 2 ? "block" : "hidden"}>
-          <h1 className="text-xl font-semibold mb-10">TWO BEDS</h1>
+          <h1 className="text-xl font-semibold mb-10 text-center">TWO BEDS</h1>
           <TwoBeds />
           <div className="text-gray-800">
             <h1 className="text-xl md:text-2xl py-2 text-green-950 font-semibold">
@@ -99,7 +102,9 @@ function MiniHeader() {
         </div>
 
         <div id="three" className={toggle == 3 ? "block" : "hidden"}>
-          <h1 className="text-xl font-semibold mb-10">THREE BEDS</h1>
+          <h1 className="text-xl font-semibold mb-10 text-center">
+            THREE BEDS
+          </h1>
           <ThreeBeds />
           <div className="text-gray-800">
             <h1 className="text-xl md:text-2xl py-2 text-green-950 font-semibold">

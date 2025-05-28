@@ -40,7 +40,6 @@ function isHoliday(date) {
 function EditRoomDetails({
   id,
   name,
-
   price,
   imageUrl,
   description,

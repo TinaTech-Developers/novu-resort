@@ -68,7 +68,7 @@ function ExecutiveBeds() {
       pagination={{ clickable: true }}
       onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
       autoplay={{
-        delay: 3000,
+        delay: 15000,
         disableOnInteraction: false,
       }}
       loop={true}
@@ -111,7 +111,7 @@ function ExecutiveBedsCard({ room }) {
           <p className="pb-4 w-full text-xs">{room.description}</p>
           <Link
             key={room._id}
-            href={`/rooms/${room._id}`}
+            href={`/rooms/executivebeds/${room._id}`}
             className="p-2 text-white bg-green-900"
           >
             View Details

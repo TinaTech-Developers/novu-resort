@@ -20,10 +20,10 @@ function Todo() {
         >
           <div className="flex items-center justify-center gap-2 my-4">
             <div className="w-10 h-1 bg-orange-900"></div>
-            <h1 className="text-lg  uppercase">our gallery</h1>
+            <h1 className="text-lg  uppercase ">our gallery</h1>
             <div className="w-10 h-1 bg-orange-900"></div>
           </div>
-          <h className="mx-auto ">Explore Our ACTIVITIES</h>
+          <h className="mx-auto text-green-950">Explore Our ACTIVITIES</h>
         </motion.div>
         <div className="flex flex-wrap items-center justify-center gap-5 mt-10">
           <ToDOCard
@@ -47,13 +47,20 @@ function Todo() {
               "Explore the trails to bring out the Adam and Eve inside. See nature for what it is, the scenery is amazing."
             }
           />
-          <ToDOCard
+          {/* <ToDOCard
             image={"/img_12.jpg"}
             title={"Culture Hour"}
             desc={
               "Meet with the locals and get a chance to understand and enjoy the rich culture our beloved country has to offer."
             }
-          />{" "}
+          /> */}
+          <ToDOCard
+            image={"/paintballing--max.webp"}
+            title={"Paint Balling"}
+            desc={
+              "At Novu Resort, paintballing is an exciting outdoor activity where friends and families team up for fun, strategy, and friendly competition in a safe, scenic setting. It’s the perfect mix of adventure and relaxation."
+            }
+          />
           <ToDOCard
             image={"/img_11.jpg"}
             title={"Troutbeck"}

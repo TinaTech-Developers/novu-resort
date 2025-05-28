@@ -55,7 +55,7 @@ function ThreeBeds() {
       pagination={{ clickable: true }}
       onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
       autoplay={{
-        delay: 3000,
+        delay: 15000,
         disableOnInteraction: false,
       }}
       loop={true}
