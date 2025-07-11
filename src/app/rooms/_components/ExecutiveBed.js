@@ -1,4 +1,3 @@
-"use client";
 import {
   Navigation,
   Pagination,
@@ -111,7 +110,7 @@ function ExecutiveBedsCard({ room }) {
           <p className="pb-4 w-full text-xs">{room.description}</p>
           <Link
             key={room._id}
-            href={`/rooms/executivebeds/${room._id}`}
+            href={`/rooms/${room._id}`}
             className="p-2 text-white bg-green-900"
           >
             View Details

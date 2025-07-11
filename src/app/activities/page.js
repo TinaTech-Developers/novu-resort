@@ -61,13 +61,13 @@ function Todo() {
               "At Novu Resort, paintballing is an exciting outdoor activity where friends and families team up for fun, strategy, and friendly competition in a safe, scenic setting. It’s the perfect mix of adventure and relaxation."
             }
           />
-          <ToDOCard
+          {/* <ToDOCard
             image={"/img_11.jpg"}
             title={"Troutbeck"}
             desc={
               "We are in close proximity to troutbeck which has a number of activities such as horseback riding."
             }
-          />{" "}
+          />{" "} */}
           <ToDOCard
             image={"/img_10.jpg"}
             title={"Landmarks"}

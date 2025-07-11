@@ -112,7 +112,7 @@ function TwoBedsCard({ room }) {
           <h1 className="uppercase text-green-950 mb-4">{room.name}</h1>
           <p className="pb-4 w-full text-xs">{room.description}</p>
           <Link
-            href={`/rooms/${room._id}`}
+            href={`/rooms/twobeds/${room._id}`}
             className="p-2 text-white bg-green-900"
           >
             View Details

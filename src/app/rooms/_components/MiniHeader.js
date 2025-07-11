@@ -86,7 +86,23 @@ function MiniHeader() {
             <h1 className="text-xl md:text-2xl py-2 text-green-950 font-semibold">
               Executive Beds at Novu Resort
             </h1>
-            <p>{`Experience refined comfort in our Executive Beds—designed for discerning travelers who appreciate both luxury and functionality. Whether you're here for business or a well-deserved retreat, these rooms offer a sophisticated space to relax, recharge, and stay productive. Each Executive Bed room features a plush king or queen bed with premium linens, a sleek work desk, and modern amenities including high-speed Wi-Fi and smart TV. With stylish decor, calming tones, and access to exclusive resort facilities, your stay is elevated from the moment you arrive. Perfect for solo travelers, couples, or professionals seeking a balance of relaxation and efficiency.`}</p>
+            <p>
+              xperience refined comfort in our Executive Beds—designed for
+              discerning travelers who appreciate both luxury and functionality.
+              Whether you're here for business or a well-deserved retreat, these
+              rooms offer a sophisticated space to relax, recharge, and stay
+              productive. Each Executive Bed room features a plush king or queen
+              bed with premium linens, a sleek work desk, and modern amenities
+              including high-speed Wi-Fi and a smart TV.
+              <br />
+              <br /> Please note: <strong></strong>Self-catering facilities are
+              available only in our 2- and 3-bed units. Executive Bed rooms do
+              not include kitchen or cooking amenities. <br />
+              <br /> With stylish decor, calming tones, and access to exclusive
+              resort facilities, your stay is elevated from the moment you
+              arrive. Perfect for solo travelers, couples, or professionals
+              seeking a balance of relaxation and efficiency.
+            </p>
           </div>
         </div>
 

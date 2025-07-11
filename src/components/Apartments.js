@@ -7,7 +7,7 @@ function Apartments() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 p-10 gap-5 ">
       <ApartmentsCard
-        image={"/apartments/IMG_8993.JPG"}
+        image={"/apartments/IMG-20241124-WA0055.jpg"}
         heading={" Executive Beds"}
         description={
           "Executive beds in hotels are large, comfortable beds with luxury features, often found in premium rooms for an enhanced guest experience."
@@ -23,7 +23,7 @@ function Apartments() {
         link={"/rooms#two"}
       />
       <ApartmentsCard
-        image={"/apartments/IMG-20241124-WA0055.jpg"}
+        image={"/apartments/IMG-20241124-WA0055.jp"}
         heading={" 3 Beds"}
         description={
           "Got it! Here's a revised version for a three-bed apartment at Novu Resort: A contemporary apartment at Novu Resort featuring three cozy beds, ideal for small families or groups seeking comfort and convenience. Guests enjoy full access to the resort’s pools, dining, and wellness amenities."

@@ -22,7 +22,7 @@ function Navbar() {
       <div className="hidden md:flex items-center justify-between px-10 w-full h-20 bg-transparent">
         <Link
           href={"/"}
-          className="text-[#06402B] text-xl uppercase text-center pt-4 font-semibold"
+          className="text-[#06402B] text-xl md:text-4xl uppercase text-center font-sans pt-4 font-semibold"
         >
           Novu Resort
         </Link>

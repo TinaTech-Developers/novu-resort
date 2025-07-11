@@ -1,6 +1,7 @@
 import About from "@/components/About";
 import Adventure from "@/components/Adventure";
 import Adventure2 from "@/components/Adventure2";
+import DiningOptions from "@/components/DinningOptions";
 import Discover from "@/components/Discover";
 import ExploreRooms from "@/components/ExploreRooms";
 import Gallery from "@/components/Gallery";
@@ -18,8 +19,10 @@ export default function Home() {
         <Adventure2 />
         {/* <Adventure /> */}
         <Discover />
+        <DiningOptions />
         <ExploreRooms heading={"Explore Our Apartments"} />
         <Services />
+
         <Testimonials />
         <Gallery />
       </Layout>

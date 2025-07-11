@@ -5,12 +5,9 @@ import React from "react";
 
 const getRoomById = async (id) => {
   try {
-    const res = await fetch(
-      `${process.env.API_BASE_URL}/api/executivebeds/${id}`,
-      {
-        cache: "no-store",
-      }
-    );
+    const res = await fetch(`${process.env.API_BASE_URL}/api/twobed/${id}`, {
+      cache: "no-store",
+    });
 
     if (!res.ok) throw new Error("Failed to fetch a room");
 
