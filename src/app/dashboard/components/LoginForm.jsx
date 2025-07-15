@@ -52,11 +52,12 @@ export default function LoginForm() {
           className="w-[90%] bg-amber-600 bg-opacity-20 p-2 outline-none text-center text-gray-700"
         />
         <button
-          href={"./dashboard/home"}
+          type="submit"
           className="w-[90%] bg-amber-600 p-2 text-center hover:text-white hover:bg-amber-900"
         >
           Login
         </button>
+
         {error && (
           <div className="bg-red-500 text-white w-fit text-sm py-1 px-3 rounded-md mt-2">
             {error}

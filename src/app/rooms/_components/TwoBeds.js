@@ -69,7 +69,7 @@ function TwoBeds() {
       pagination={{ clickable: true }}
       onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
       autoplay={{
-        delay: 15000,
+        delay: 25000,
         disableOnInteraction: false,
       }}
       loop={true}

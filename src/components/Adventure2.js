@@ -46,6 +46,7 @@ function Adventure2() {
             video={
               "https://utfs.io/f/M8crfG3am8lfL9D9rm9uKAaL1TB6NQhjD0kumYc2sR5vVnlz"
             }
+            link={"/inyanga"}
           />
         </motion.div>
         <motion.div

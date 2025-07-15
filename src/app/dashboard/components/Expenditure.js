@@ -106,7 +106,7 @@ function Expenditure() {
         <h1 className="font-semibold mb-4">Expenditure</h1>
         <FillButton
           name={"Add Expenditure"}
-          link={""}
+          link={"/"}
           onClick={() => setModalOpen(true)}
         />
       </div>

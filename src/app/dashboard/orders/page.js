@@ -46,11 +46,11 @@ function Orders() {
                       </div>
                       <p className="pl-4">{order.fullname}</p>
                     </div>
-                    {/* <Link href={}> */}
+
                     <p className="text-gray-500 sm:text-left text-right">
                       {order.email}
                     </p>
-                    {/* </Link> */}
+
                     <p className="hidden md:flex">{order.period}</p>
                     <p className="hidden md:flex">{order.newName}</p>
                     <div className="sm:flex hidden justify-between items-center w-48 ">

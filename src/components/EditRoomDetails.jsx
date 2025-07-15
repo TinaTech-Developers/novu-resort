@@ -68,7 +68,7 @@ function EditRoomDetails({
       setDifference(diffDays);
       setTotal((diffDays * adjustedPrice).toFixed(2));
     }
-  }, [formData.arrivaldate, formData.deptdate]);
+  }, [formData, adjustedPrice]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

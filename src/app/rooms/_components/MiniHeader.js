@@ -4,12 +4,10 @@ import React, { useState, useEffect } from "react";
 import TwoBeds from "./TwoBeds";
 import ThreeBeds from "./ThreeBeds";
 import ExecutiveBeds from "./ExecutiveBed";
-import { usePathname } from "next/navigation";
 
 function MiniHeader() {
   const [toggle, setToggle] = useState(1);
 
-  // Scroll to section and toggle it on hash change
   useEffect(() => {
     const hash = window.location.hash;
 

@@ -1,4 +1,3 @@
-
 import Layout from "@/components/Layout";
 import SubHero from "@/components/SubHero";
 import React from "react";
@@ -10,11 +9,8 @@ function Rooms() {
   return (
     <Layout>
       <SubHero head={"Our Laxurious Rooms"} />
-      {/* <Inquiry /> */}
       <ApartmentAvailability />
       <MiniHeader />
-
-      {/* <ExecutiveBeds /> */}
     </Layout>
   );
 }

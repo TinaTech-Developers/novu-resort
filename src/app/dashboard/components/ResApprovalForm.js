@@ -113,7 +113,7 @@ function ResApprovalForm({
                 link={"javascript:void(0)"}
                 onClick={() => (window.location = `mailto:${email}`)}
               />
-              <FillButton name={"Approve"} link={""} onClick={handleSubmit} />
+              <FillButton name={"Approve"} link={"/"} onClick={handleSubmit} />
             </div>
             <ToastContainer />
           </form>

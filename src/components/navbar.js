@@ -18,15 +18,15 @@ function Navbar() {
 
   return (
     <div className="shadow-lg w-full fixed top-0 left-0 z-50 bg-white">
-      {/* Top Section: Hidden on smaller screens */}
+      {/* Top Section */}
       <div className="hidden md:flex items-center justify-between px-10 w-full h-20 bg-transparent">
         <Link
-          href={"/"}
+          href="/"
           className="text-[#06402B] text-xl md:text-4xl uppercase text-center font-sans pt-4 font-semibold"
         >
           Novu Resort
         </Link>
-        <Link href={"/"} className="w-[80px] h-[30px] ">
+        <Link href="/" className="w-[80px] h-[30px]">
           <Image
             src="https://5puqigze8f.ufs.sh/f/M8crfG3am8lfrPENUKmBK8DQxoItvOhfy4Fwj5PGce1Nqkul"
             alt="Logo"
@@ -53,19 +53,21 @@ function Navbar() {
             open ? "top-20 opacity-100" : "top-[-490px]"
           }`}
         >
-          {links.map((link) => (
-            <li
-              key={link.name}
-              className="md:pr-8 text-base uppercase md:my-0 my-4"
-            >
-              <Link href={link.link} passHref>
-                <span className="group text-white">
-                  {link.name}
-                  <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-green-600"></span>
-                </span>
-              </Link>
-            </li>
-          ))}
+          {links.map((link) =>
+            link.link ? (
+              <li
+                key={link.name}
+                className="md:pr-8 text-base uppercase md:my-0 my-4"
+              >
+                <Link href={link.link}>
+                  <span className="group text-white">
+                    {link.name}
+                    <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-green-600"></span>
+                  </span>
+                </Link>
+              </li>
+            ) : null
+          )}
         </ul>
       </div>
     </div>
