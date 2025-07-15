@@ -126,9 +126,9 @@ function EditRoomDetails({
 
   return (
     <div className="max-w-screen-xl mx-auto px-5 py-16 bg-gradient-to-tr from-green-50 to-white">
-      <div className="flex justify-between items-center mb-10">
+      <div className="flex justify-between items-center mb-10 pt-24">
         <div>
-          <h1 className="text-4xl font-extrabold text-green-900 tracking-tight">
+          <h1 className="text-2xl md:text-4xl font-bold text-green-900 tracking-tight">
             Experience True Comfort
           </h1>
           <p className="flex items-center gap-2 text-gray-700 mt-2">
@@ -138,7 +138,7 @@ function EditRoomDetails({
         </div>
         <Link
           href="/rooms"
-          className="flex items-center gap-2 px-5 py-2 bg-green-800 text-white font-medium rounded-full shadow hover:bg-green-900 transition"
+          className="flex items-center gap-2 px-5 py-2 bg-green-900 text-white font-medium  shadow hover:bg-green-900 transition"
         >
           <ArrowBigLeft /> Back
         </Link>
@@ -233,11 +233,11 @@ function EditRoomDetails({
               </ul>
             </div>
 
-            <div>
+            <div className="text-gray-600">
               <h3 className="font-bold text-green-900 text-lg mb-2">
                 Inclusions
               </h3>
-              <p>
+              <p className="text-sm">
                 Accommodation 2-bedroom apartment comprising of master bedroom
                 ensuite, a twin bedroom (2 single beds), and a convertible sofa
                 couch in the lounge to house a total of six people. DSTV (TV in
@@ -252,11 +252,11 @@ function EditRoomDetails({
               </p>
             </div>
 
-            <div>
+            <div className="text-gray-600">
               <h3 className="font-bold text-green-900 text-lg mb-2">
                 Check-In and Check-Out
               </h3>
-              <ul className="list-disc ml-5 space-y-1">
+              <ul className="list-disc ml-5 space-y-1 text-sm">
                 <li>
                   Check-in time is from 14:00hrs until 20:00hrs (unless with
                   prior arrangements). Guests are required to present payment
@@ -269,11 +269,11 @@ function EditRoomDetails({
               </ul>
             </div>
 
-            <div>
+            <div className="text-gray-600">
               <h3 className="font-bold text-green-900 text-lg mb-2">
                 Terms and Conditions
               </h3>
-              <ul className="list-disc ml-5 space-y-1">
+              <ul className="list-disc ml-5 space-y-1 text-sm">
                 <li>
                   Smoking is prohibited in all rooms and the conference room.
                 </li>
@@ -290,7 +290,7 @@ function EditRoomDetails({
         <div className="bg-white rounded-2xl shadow-xl p-6">
           <div className="text-center mb-6">
             <Image
-              src="/logo.jpeg"
+              src="https://5puqigze8f.ufs.sh/f/M8crfG3am8lfrPENUKmBK8DQxoItvOhfy4Fwj5PGce1Nqkul"
               alt="Logo"
               width={90}
               height={90}

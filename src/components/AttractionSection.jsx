@@ -151,11 +151,7 @@ export function AttractionsSection() {
       : places.filter((p) => p.type === activeFilter);
 
   return (
-    <div className="w-full mt-24 px-4">
-      <h2 className="text-center text-2xl sm:text-3xl font-bold text-green-900 mb-4">
-        Explore Around Novu Resort
-      </h2>
-
+    <div className="w-full mt-10 px-4">
       {/* Filters */}
       <div className="flex flex-wrap justify-center gap-2 mb-6">
         {Object.entries(filters).map(([key, label]) => (

@@ -21,11 +21,15 @@ function Todo() {
           className="text-4xl font-bold"
         >
           <div className="flex items-center justify-center gap-2 my-4">
-            <div className="w-10 h-1 bg-orange-900"></div>
-            <h1 className="text-lg uppercase">our gallery</h1>
-            <div className="w-10 h-1 bg-orange-900"></div>
+            <div className="w-10 h-1 bg-orange-700"></div>
+            <h1 className="text-lg uppercase text-orange-700 font-light">
+              our gallery
+            </h1>
+            <div className="w-10 h-1 bg-orange-700"></div>
           </div>
-          <h2 className="mx-auto text-green-950">Explore Our ACTIVITIES</h2>
+          <h2 className="mx-auto text-green-950 font-normal">
+            Explore Our Activities
+          </h2>
         </motion.div>
 
         {/* Main Activity Cards */}
@@ -88,7 +92,6 @@ function Todo() {
           />
         </div>
 
-        {/* ➕ NEW SECTION: Explore Around Novu Resort */}
         <motion.div
           initial={{ y: 100, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
@@ -96,14 +99,18 @@ function Todo() {
           className="text-3xl font-bold mt-20 text-center"
         >
           <div className="flex items-center justify-center gap-2 my-4">
-            <div className="w-10 h-1 bg-orange-900"></div>
-            <h1 className="text-lg uppercase">nearby attractions</h1>
-            <div className="w-10 h-1 bg-orange-900"></div>
+            <div className="w-10 h-1 bg-orange-700"></div>
+            <h1 className="text-lg uppercase text-orange-700 font-light">
+              nearby attractions
+            </h1>
+            <div className="w-10 h-1 bg-orange-700"></div>
           </div>
-          <h2 className="mx-auto text-green-950">Explore Around Novu Resort</h2>
+          <h2 className="mx-auto text-green-900 font-normal">
+            Explore Around Novu Resort
+          </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 px-4">
+        {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 px-4">
           {[
             { name: "World’s View", distance: "11km" },
             { name: "Rhodes Museum Visit", distance: "19km" },
@@ -142,9 +149,9 @@ function Todo() {
               )}
             </motion.div>
           ))}
-        </div>
+        </div> */}
 
-        {/* <AttractionsSection /> */}
+        <AttractionsSection />
         <Adventure />
       </div>
     </Layout>
