@@ -5,7 +5,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import HeroCard from "./HeroCard";
 import HeroCard1 from "./HeroCard1";
 import HeroCardHome from "./HeroCardHome";
 import HeroCardz from "./HeroCardz";

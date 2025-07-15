@@ -1,4 +1,3 @@
-// components/DiningOptions.js
 
 export default function DiningOptions() {
   const diningSpots = [

@@ -13,23 +13,23 @@ function Footer() {
           <h1 className="text-white text-xl font-semibold p-2">Explore us!</h1>
           <div className="flex items-center justify-between gap-1">
             <SlArrowRight color="white" size={"0.8rem"} />
-            <Link href={""}>About Us</Link>
+            <Link href={"/"}>About Us</Link>
           </div>
           <div className="flex items-center justify-between gap-1">
             <SlArrowRight color={"white"} size={"0.8rem"} />
-            <Link href={""}>Terms & Conditions</Link>
+            <Link href={"/"}>Terms & Conditions</Link>
           </div>
           <div className="flex items-center justify-between gap-1">
             <SlArrowRight color={"white"} size={"0.8rem"} />
-            <Link href={""}>Newss & Articles</Link>
+            <Link href={"/"}>Newss & Articles</Link>
           </div>
           <div className="flex items-center justify-between gap-1">
             <SlArrowRight color={"white"} size={"0.8rem"} />
-            <Link href={""}>How we work</Link>
+            <Link href={"/"}>How we work</Link>
           </div>
           <div className="flex items-center justify-between gap-1">
             <SlArrowRight color={"white"} size={"0.8rem"} />
-            <Link href={""}>Contact Us</Link>
+            <Link href={"/"}>Contact Us</Link>
           </div>
         </div>
         <div className=" flex flex-col px-20 md:px-32 gap-2 md:p-4 text-gray-500 ">
@@ -48,16 +48,16 @@ function Footer() {
             pages
           </p>
           <div className="flex items-start justify-between gap-2 mt-2">
-            <Link href={""}>
+            <Link href={"/"}>
               <FaSquareWhatsapp size={25} color="green" />
             </Link>
-            <Link href={""}>
+            <Link href={"/"}>
               <IoLogoFacebook size={25} color="blue" />
             </Link>
-            <Link href={""}>
+            <Link href={"/"}>
               <FaLinkedin size={25} color="blue" />
             </Link>
-            <Link href={""}>
+            <Link href={"/"}>
               <FaXTwitter size={25} color="white" />
             </Link>
           </div>
@@ -75,7 +75,7 @@ function Footer() {
 
       <div className="flex items-center justify-center w-full h-10 bg-gray-900">
         <p className="text-white text-sm">
-          Copyright 2023 by <Link href={""}>TinaSoft Nexus</Link>
+          Copyright 2023 by <Link href={"/"}>TinaSoft Nexus</Link>
         </p>
       </div>
     </div>

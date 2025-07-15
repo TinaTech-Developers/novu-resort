@@ -19,13 +19,13 @@ const Modal = ({ modalOpen, setModalOpen, children }) => {
         <hr className="py-2 bg-amber-100" />
         <div className="grid grid-cols-2 md:flex gap-4 py-4 font-semibold">
           <Link
-            href={""}
+            href={"/"}
             className="w-[50%] hover:bg-amber-600 py-2 hover:text-white"
           >
             OVERVIEW
           </Link>
           <Link
-            href={""}
+            href={"/"}
             className="w-[50%] hover:bg-amber-600 py-2 hover:text-white"
           >
             BOOING CONDITIONS

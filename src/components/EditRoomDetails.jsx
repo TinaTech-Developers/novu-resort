@@ -6,35 +6,28 @@ import { MdBathtub, MdLocationSearching } from "react-icons/md";
 import FillButton from "./FillButton";
 import { ArrowBigLeft } from "lucide-react";
 import Link from "next/link";
-import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
-
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
-// Example list of Zimbabwean public holidays (you can update this or fetch from an API)
 const zimbabweHolidays = [
-  "01-01", // New Year's Day
-  "04-18", // Independence Day
-  "05-01", // Labour Day
-  "08-14", // Heroes Day
-  "08-15", // Unity Day
-  "12-25", // Christmas Day
-  "11-20", // test date
+  "01-01",
+  "04-18",
+  "05-01",
+  "08-14",
+  "08-15",
+  "12-25",
+  "11-20",
 ];
 
-// Helper function to check if today is a holiday
 function isHoliday(date) {
-  const formattedDate = date.toISOString().split("T")[0]; // Format as 'YYYY-MM-DD'
-  return zimbabweHolidays.includes(formattedDate);
+  const formatted = date.toISOString().slice(5, 10);
+  return zimbabweHolidays.includes(formatted);
 }
 
 function EditRoomDetails({
@@ -43,471 +36,329 @@ function EditRoomDetails({
   price,
   imageUrl,
   description,
-  priceNumber,
   image1,
   image2,
   image3,
 }) {
-  // const API_BASE_URL =
-  //   process.env.API_BASE_URL ||
-  //   "http://localhost:3000" ||
-  //   "www.cfknyaresort.co.zw";
-
-  // const [newName, setNewName] = useState(name);
-  const [newPrice, setNewPrice] = useState(price);
-  const [newImage, setNewImage] = useState(imageUrl);
-  const [newDescription, setNewDescription] = useState(description);
-
-  const [book, setBook] = useState(name);
-  const [fullName, setFullName] = useState("");
-  const [surname, setSurname] = useState("");
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [country, setCountry] = useState("");
-  const [email, setEmail] = useState("");
-  const [arrivaldate, setArrivaldate] = useState();
-  const [deptdate, setDeptdate] = useState();
-  const [adultsNo, setAdultsNo] = useState("");
-  const [kidsNo, setKidsNo] = useState("");
+  const [formData, setFormData] = useState({
+    fullName: "",
+    surname: "",
+    address: "",
+    city: "",
+    country: "",
+    email: "",
+    arrivaldate: "",
+    deptdate: "",
+    adultsNo: "",
+    kidsNo: "",
+  });
   const [difference, setDifference] = useState(null);
-  let [total, setTotal] = useState("");
+  const [total, setTotal] = useState("");
+  const adjustedPrice = isHoliday(new Date())
+    ? (parseFloat(price) + 50).toFixed(2)
+    : price;
 
-  const [onHoliday, setOnHoliday] = useState(false);
-  const [error, setError] = useState(null);
-
-  const calculateAdjustedPrice = (price) => {
-    const today = new Date();
-    let adjustedPrice = parseFloat(price); // Convert string price to float
-
-    if (isHoliday(today)) {
-      adjustedPrice += 50; // Add 50 to the price if today is a holiday
-    }
-
-    return adjustedPrice.toFixed(2); // Return the adjusted price, rounded to 2 decimal places
-  };
-
-  if (error) {
-    return <div>{error}</div>;
-  }
-  const adjustedPrice = calculateAdjustedPrice(price);
-
-  const reset = async () => {
-    setFullName("");
-    setSurname("");
-    setAddress("");
-    setCity("");
-    setCountry("");
-    setEmail("");
-    setArrivaldate("");
-    setDeptdate("");
-    setAdultsNo("");
-    setKidsNo("");
-    setDifference(null);
-    setTotal("");
-  };
-
-  const handleBook = async (e) => {
-    e.preventDefault();
-
-    if (
-      !fullName ||
-      !surname ||
-      !address ||
-      !city ||
-      !country ||
-      !email ||
-      !arrivaldate ||
-      !deptdate ||
-      !kidsNo ||
-      !adultsNo ||
-      !book
-    ) {
-      toast.error("Fill all fields");
-      return;
-    }
-    if (Number(kidsNo) + Number(adultsNo) > 6) {
-      toast.error("Our Apartments only accomodate 6 people or less");
-      return;
-    }
-
-    try {
-      const res = await fetch("/api/reservations", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({
-          fullName,
-          surname,
-          address,
-          city,
-          country,
-          email,
-          arrivaldate,
-          deptdate,
-          kidsNo,
-          adultsNo,
-          book,
-          price,
-          total,
-        }),
-      });
-
-      if (res.ok) {
-        toast.success(
-          "Your Booking Was Successful, We will respond to your email"
-        );
-        reset();
-        calculateDifference();
-      } else {
-        const { message } = await res.json();
-        toast.error(message);
-      }
-    } catch (error) {
-      console.log("Error ", error);
-    }
-  };
-
-  /* eslint-disable react-hooks/rules-of-hooks */
   useEffect(() => {
+    const { arrivaldate, deptdate } = formData;
     if (arrivaldate && deptdate) {
       const d1 = new Date(arrivaldate);
       const d2 = new Date(deptdate);
       const diffTime = Math.abs(d2 - d1);
       const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
       setDifference(diffDays);
-    } else {
-      setDifference(null); // Reset difference if dates are not valid
+      setTotal((diffDays * adjustedPrice).toFixed(2));
     }
-  }, [arrivaldate, deptdate]); // Dependency array to run effect when dates change
+  }, [formData.arrivaldate, formData.deptdate]);
 
-  console.log(difference);
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const {
+      fullName,
+      surname,
+      address,
+      city,
+      country,
+      email,
+      arrivaldate,
+      deptdate,
+      adultsNo,
+      kidsNo,
+    } = formData;
+    if (Object.values(formData).some((v) => !v))
+      return toast.error("Fill all fields");
+    if (+adultsNo + +kidsNo > 6) return toast.error("Only 6 guests allowed");
+
+    try {
+      const res = await fetch("/api/reservations", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, book: name, price, total }),
+      });
+
+      if (res.ok) {
+        toast.success("Booking successful! Check your email.");
+        setFormData({
+          fullName: "",
+          surname: "",
+          address: "",
+          city: "",
+          country: "",
+          email: "",
+          arrivaldate: "",
+          deptdate: "",
+          adultsNo: "",
+          kidsNo: "",
+        });
+        setDifference(null);
+        setTotal("");
+      } else {
+        const { message } = await res.json();
+        toast.error(message);
+      }
+    } catch (err) {
+      toast.error("Server error. Try again later.");
+    }
+  };
 
   return (
-    <div className="md:mt-36 py-5 mt-28 p-5">
-      <div className="flex items-center justify-between">
+    <div className="max-w-screen-xl mx-auto px-5 py-16 bg-gradient-to-tr from-green-50 to-white">
+      <div className="flex justify-between items-center mb-10">
         <div>
-          <h1 className="text-2xl md:text-3xl font-semibold text-green-950">
-            Laxury Room
+          <h1 className="text-4xl font-extrabold text-green-900 tracking-tight">
+            Experience True Comfort
           </h1>
-          <p className="flex items-center gap-5 text-gray-600">
-            <MdLocationSearching size={28} color="red" />
-            Inyanga, Zimbabwe
+          <p className="flex items-center gap-2 text-gray-700 mt-2">
+            <MdLocationSearching size={22} className="text-red-600" /> Inyanga,
+            Zimbabwe
           </p>
         </div>
         <Link
-          href={"/rooms"}
-          className="flex items-center justify-center gap-1 border px-3 py-2 bg-green-900 text-white"
+          href="/rooms"
+          className="flex items-center gap-2 px-5 py-2 bg-green-800 text-white font-medium rounded-full shadow hover:bg-green-900 transition"
         >
-          <ArrowBigLeft />
-          Back
+          <ArrowBigLeft /> Back
         </Link>
       </div>
-      <hr className="w-[100%] px-4 mx-auto my-4" />
-      <div className=" w-[100%] grid grid-cols-1 md:grid-cols-5 mt-5 mx-auto px-5">
-        <div className="col-span-1 md:col-span-3 border left-0">
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <div className="lg:col-span-2 space-y-8">
           <Swiper
-            // install Swiper modules
             modules={[Navigation, Pagination, Scrollbar, A11y]}
-            spaceBetween={50}
+            spaceBetween={30}
             slidesPerView={1}
             navigation
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
-            onSwiper={(swiper) => console.log(swiper)}
-            onSlideChange={() => console.log("slide change")}
           >
-            <SwiperSlide>
-              <Image
-                src={imageUrl}
-                alt="room image"
-                height={400}
-                width={400}
-                className="h-[30rem] w-full object-cover"
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Image
-                src={image1}
-                alt="room image"
-                height={400}
-                width={400}
-                className="h-[30rem] w-full object-cover"
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Image
-                src={image2}
-                alt="room image"
-                height={400}
-                width={400}
-                className="h-[30rem] w-full object-cover"
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <Image
-                src={image3}
-                alt="room image"
-                height={400}
-                width={400}
-                className="h-[30rem] w-full object-cover"
-              />
-            </SwiperSlide>
+            {[imageUrl, image1, image2, image3].map((src, idx) => (
+              <SwiperSlide key={idx}>
+                <Image
+                  src={src}
+                  alt={`Room image ${idx}`}
+                  width={800}
+                  height={500}
+                  className="rounded-xl shadow-lg w-full h-[450px] object-cover"
+                />
+              </SwiperSlide>
+            ))}
           </Swiper>
 
-          <div className="bg-black h-44 w-full -mt-2">
-            <Image
-              src={imageUrl}
-              alt=""
-              height={200}
-              width={200}
-              className="h-44 w-44 object-cover p-2 mt-2"
-            />
-          </div>
-          <div className="border p-5 ">
-            <h1 className="text-2xl font-semibold uppercase text-green-950">
-              Room description
-            </h1>
-            <p className="text-green-700">{name}</p>
-            <p className="text-gray-800 font-normal">{description}</p>
-            <hr className="my-4" />
-            <div className="font-normal text-gray-800">
-              <h2 className="text-xl font-normal">About room</h2>
-
-              <div className="grid grid-cols-3 mt-5">
-                <div className="col-span-1 flex items-center justify-start gap-1">
-                  <FaBed /> 2 Bed
-                </div>
-                <div className="col-span-1 flex items-center justify-start gap-1">
-                  <MdBathtub /> 2 Bath
-                </div>
-                <div className="flex items-center justify-start gap-1">
-                  <FaWifi /> Free WiFi
-                </div>
+          <div className="bg-white rounded-2xl shadow-xl p-6 space-y-8">
+            <div>
+              <h2 className="text-2xl font-bold text-green-800">
+                Room Overview
+              </h2>
+              <p className="text-green-600 font-medium mt-1">{name}</p>
+              <p className="text-gray-700 mt-2 leading-relaxed text-sm">
+                {description}
+              </p>
+              <div className="grid grid-cols-3 gap-4 mt-6">
+                <span className="flex items-center gap-2 text-sm">
+                  <FaBed className="text-green-700" /> 2 Beds
+                </span>
+                <span className="flex items-center gap-2 text-sm">
+                  <MdBathtub className="text-green-700" /> 2 Baths
+                </span>
+                <span className="flex items-center gap-2 text-sm">
+                  <FaWifi className="text-green-700" /> Free WiFi
+                </span>
               </div>
             </div>
-            <hr className="my-4" />
 
-            <div className="text-sm font-normal text-gray-800">
-              <h1 className="my-4 font-bold ">Notes</h1>
-              <div className="text-sm">
-                <h2 className="font-semibold">Inclusions</h2>
-                <p className="text-xs">
-                  {
-                    "  Accommodation 2-bedroom apartment comprising of master bedroom ensuite, a twin bedroom (2 single beds) and a convertible sofa couch in the lounge to house a total of six people. DSTV (TV in lounge and Master bedroom) and WiFi, common bathroom with shower, generator for lights, TV, fridge & booster pump (it does not power equipment with elements). A braai area for each apartment, valuables safe and well-equipped kitchen with gas stove and oven, microwave, toaster, crockery, cutlery, glassware, pots & pans etc. Electric blanket in master bedroom when cold. Car cleaning and housekeeping services available. Additional bed available on request at cost."
-                  }
-                </p>
-              </div>
+            <div>
+              <h3 className="font-bold text-green-900 text-lg mb-2">
+                NOVU Resort Amenities
+              </h3>
+              <ul className="list-disc ml-5 space-y-1 text-sm text-gray-800">
+                <li>
+                  Apartment Features include a fully equipped kitchen,
+                  gas/electric stove, gas geysers, lounge, dining area, and
+                  fireplace.
+                </li>
+                <li>
+                  Entertainment includes 72-inch TVs and DStv in lounges and
+                  master bedrooms.
+                </li>
+                <li>Electricity Backup with a solar system and generator.</li>
+                <li>High-Speed Wi-Fi available 24/7 and unlimited.</li>
+                <li>
+                  Gourmet Kitchens with high-end appliances and designer
+                  finishes.
+                </li>
+                <li>
+                  Smart Home Features include air conditioning in executive
+                  rooms and resort-wide alarm security.
+                </li>
+                <li>Daily Housekeeping for cleanliness and comfort.</li>
+                <li>
+                  Event Centre for business and social events like weddings.
+                </li>
+                <li>24-hour Front Desk for continuous guest support.</li>
+                <li>Swimming Pool for relaxation and social activities.</li>
+                <li>Outdoor Spaces with gardens and green areas.</li>
+                <li>Secure Parking available.</li>
+                <li>Laundry Services upon request.</li>
+                <li>
+                  Private Outdoor Areas with a verandah, braai area, seating,
+                  and a pool table near the pool.
+                </li>
+                <li>
+                  Chef & Restaurant Services available upon request or for
+                  guests who prefer not to self-cater.
+                </li>
+              </ul>
+            </div>
 
-              <div className="mt-4">
-                <h2 className="font-semibold">Checking In and Checking Out:</h2>
-                <li className="text-xs">
-                  {
-                    " Check-in time is from 1400hrs until 2000hrs (unless with prior arrangements). Guests are required to present payment upon check-in along with a valid form and personal identity document."
-                  }
+            <div>
+              <h3 className="font-bold text-green-900 text-lg mb-2">
+                Inclusions
+              </h3>
+              <p>
+                Accommodation 2-bedroom apartment comprising of master bedroom
+                ensuite, a twin bedroom (2 single beds), and a convertible sofa
+                couch in the lounge to house a total of six people. DSTV (TV in
+                lounge and master bedroom) and WiFi, common bathroom with
+                shower, generator for lights, TV, fridge & booster pump (it does
+                not power equipment with elements). A braai area for each
+                apartment, valuables safe and well-equipped kitchen with gas
+                stove and oven, microwave, toaster, crockery, cutlery,
+                glassware, pots & pans etc. Electric blanket in master bedroom
+                when cold. Car cleaning and housekeeping services available.
+                Additional bed available on request at cost.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="font-bold text-green-900 text-lg mb-2">
+                Check-In and Check-Out
+              </h3>
+              <ul className="list-disc ml-5 space-y-1">
+                <li>
+                  Check-in time is from 14:00hrs until 20:00hrs (unless with
+                  prior arrangements). Guests are required to present payment
+                  upon check-in along with a valid form of personal ID.
                 </li>
-                <li className="text-xs">
-                  {
-                    "Check-out is strictly at 10am. (Late checkout will attract a fee of $30 per hour). "
-                  }
+                <li>
+                  Check-out is strictly at 10:00am. Late checkout attracts a fee
+                  of $30/hour.
                 </li>
-              </div>
-              <div className="mt-4">
-                <h2 className="font-semibold">Terms and Conditions </h2>
-                <li className="text-xs">
-                  {
-                    " Smoking is prohibited in all rooms and the conference room."
-                  }
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="font-bold text-green-900 text-lg mb-2">
+                Terms and Conditions
+              </h3>
+              <ul className="list-disc ml-5 space-y-1">
+                <li>
+                  Smoking is prohibited in all rooms and the conference room.
                 </li>
-                <li className="text-xs">
-                  {"No loud music or shouting allowed within the rooms."}
+                <li>No loud music or shouting allowed within the rooms.</li>
+                <li>
+                  Switch off all lights, TV, and air conditioners (where
+                  available) when exiting rooms.
                 </li>
-                {/* <li className="text-xs">
-                  {
-                    " No phone calls / loud social media video streams. (Please respect other guests) "
-                  }
-                </li> */}
-                <li className="text-xs">
-                  {
-                    "Switch off all lights, TV and air conditioners (where available) when exiting rooms"
-                  }
-                </li>
-              </div>
+              </ul>
             </div>
           </div>
         </div>
-        <div className="flex flex-col justify- items-center gap-4 mt-10 md:mt-0 col-span-2 h-full w-full md:mx-5 border mx-auto p-5 ">
-          <Image
-            src={"/logo.jpeg"}
-            alt="Novu Resort"
-            height={100}
-            width={200}
-            className="h-44 w-44 object-cover"
-          />
 
-          <FillButton name={"Whatsapp Us"} link={""} onClick={""} />
+        <div className="bg-white rounded-2xl shadow-xl p-6">
+          <div className="text-center mb-6">
+            <Image
+              src="/logo.jpeg"
+              alt="Logo"
+              width={90}
+              height={90}
+              className="mx-auto rounded-full"
+            />
+            <p className="text-2xl font-bold text-green-800 mt-4">
+              ${adjustedPrice}{" "}
+              <span className="text-sm text-gray-500">/ night</span>
+            </p>
+            {isHoliday(new Date()) && (
+              <p className="text-sm text-yellow-600 mt-1">
+                Holiday Rate Applied
+              </p>
+            )}
+          </div>
 
-          <p className="text-green-600 text-start">
-            Complete this form for booking...
-          </p>
-          {isHoliday ? <p>${adjustedPrice} per night</p> : <p>{price}</p>}
-
-          <form onSubmit={handleBook}>
-            <div className="w-full gap-2 mb-4">
-              <div className="fex flex-wrap md:grid md:grid-cols-2 gap-2">
-                <div className="col-span-1 py-1">
-                  <label className="font-semibold">
-                    Name<span className="text-red-700">*</span>
-                  </label>
-                  <input
-                    placeholder="Fullname"
-                    type="text"
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    className="input input-bordered w-full bg-gray-300 text-black"
-                  />
-                </div>
-                <div className="col-span-1 py-1">
-                  <label className="font-semibold">
-                    Surname<span className="text-red-700">*</span>
-                  </label>
-                  <input
-                    placeholder="surname"
-                    type="text"
-                    value={surname}
-                    onChange={(e) => setSurname(e.target.value)}
-                    className="input input-bordered w-full bg-gray-300 text-black"
-                  />
-                </div>
-              </div>
-              <div className="col-span-1 py-1">
-                <label className="font-semibold">
-                  Address<span className="text-red-700">*</span>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            {[
+              { label: "Full Name", name: "fullName" },
+              { label: "Surname", name: "surname" },
+              { label: "Address", name: "address" },
+              { label: "City", name: "city" },
+              { label: "Country", name: "country" },
+              { label: "Email", name: "email", type: "email" },
+              {
+                label: "Arrival Date",
+                name: "arrivaldate",
+                type: "datetime-local",
+              },
+              {
+                label: "Departure Date",
+                name: "deptdate",
+                type: "datetime-local",
+              },
+              { label: "Adults", name: "adultsNo" },
+              { label: "Children", name: "kidsNo" },
+            ].map(({ label, name, type = "text" }) => (
+              <div key={name}>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  {label}
                 </label>
                 <input
-                  placeholder="Address"
-                  type="text"
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
-                  className="input input-bordered w-full bg-gray-300 text-black"
+                  type={type}
+                  name={name}
+                  value={formData[name]}
+                  onChange={handleChange}
+                  className="w-full p-2 border rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-green-600"
                 />
               </div>
-              <div className="fex flex-wrap md:grid md:grid-cols-2 gap-2">
-                <div className="col-span-1 py-1">
-                  <label className="font-semibold">
-                    City<span className="text-red-700">*</span>
-                  </label>
-                  <input
-                    placeholder="City"
-                    type="text"
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
-                    className="input input-bordered w-full bg-gray-300 text-black"
-                  />
-                </div>
-                <div className="col-span-1 py-1">
-                  <label className="font-semibold">
-                    Country<span className="text-red-700">*</span>
-                  </label>
-                  <input
-                    placeholder="Country"
-                    type="text"
-                    value={country}
-                    onChange={(e) => setCountry(e.target.value)}
-                    className="input input-bordered w-full bg-gray-300 text-black"
-                  />
-                </div>
-              </div>
-              <div className="col-span-1 py-1">
-                <label className="font-semibold">
-                  Email<span className="text-red-700">*</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="input input-bordered w-full bg-gray-300 text-black"
-                />
-              </div>
-              <div className="fex flex-wrap md:grid md:grid-cols-2 gap-2">
-                <div className="col-span-1 py-1">
-                  <label className="font-semibold">
-                    Arrival Date<span className="text-red-700">*</span>
-                  </label>
-                  <input
-                    value={arrivaldate}
-                    onChange={(e) => setArrivaldate(e.target.value)}
-                    type="datetime-local"
-                    name="arrivaldate"
-                    className="input input-bordered w-full bg-gray-300 text-black"
-                  />
-                </div>
-                <div className="col-span-1 py-1">
-                  <label className="font-semibold">
-                    Departure Date<span className="text-red-700">*</span>
-                  </label>
-                  <input
-                    value={deptdate}
-                    onChange={(e) => setDeptdate(e.target.value)}
-                    type="datetime-local"
-                    name="deptdate"
-                    className="input input-bordered w-full bg-gray-300 text-black"
-                  />
-                </div>
-              </div>
-              <div className="fex flex-wrap md:grid md:grid-cols-2 gap-2">
-                <div className="col-span-1 py-1">
-                  <label className="font-semibold">
-                    Number of Adults<span className="text-red-700">*</span>
-                  </label>
-                  <input
-                    value={adultsNo}
-                    onChange={(e) => setAdultsNo(e.target.value)}
-                    type="text"
-                    name="adults"
-                    className="input input-bordered w-full bg-gray-300 text-black"
-                  />
-                </div>
-                <div className="col-span-1 py-1">
-                  <label className="font-semibold">
-                    Number of children
-                    <span className="text-red-700">*</span>
-                  </label>
-                  <input
-                    value={kidsNo}
-                    onChange={(e) => setKidsNo(e.target.value)}
-                    type="text"
-                    name="kids"
-                    className="input input-bordered w-full bg-gray-300 text-black"
-                  />
-                </div>
-              </div>
-            </div>
+            ))}
 
             {difference !== null && (
-              <p className="font-semibold">US${difference * adjustedPrice}</p>
+              <div className="bg-green-50 border-l-4 border-green-500 p-3 rounded-lg text-green-800">
+                <p className="font-semibold text-sm">
+                  Total: <span className="text-lg">${total}</span> for{" "}
+                  {difference} night(s)
+                </p>
+              </div>
             )}
-            <p className="font-semibold">
-              US${(total = difference * adjustedPrice)} per {difference} Days
-            </p>
-            <input value={total} onChange={(e) => setTotal(e.target.value)} />
 
             <button
-              onClick={handleBook}
               type="submit"
-              className=" border relative py-2 px-6  bg-transparent text-gray-700 transition-colors before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-full before:origin-top-left before:scale-x-0 before:bg-orange-700 before:transition-transform before:duration-300 before:content-[''] hover:text-white before:hover:scale-x-100"
+              className="w-full bg-green-700 hover:bg-green-800 transition text-white font-semibold py-2 rounded-lg shadow-lg"
             >
-              SUBMIT FORM
+              Confirm Booking
             </button>
             <ToastContainer />
           </form>
-          <p className="text-center text-sm font-normal text-gray-600 ">
-            {
-              "By submitting this booking, you agree to the Novu Resort Terms & Conditions' "
-            }
-            <span className="text-red-700">Terms & Conditions</span>
-          </p>
         </div>
       </div>
     </div>

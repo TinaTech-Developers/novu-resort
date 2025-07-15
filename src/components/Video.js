@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-const Video = ({ video }) => {
+const Video = ({ video, link, heading, description }) => {
   return (
     <div className="flex flex-col items-center justify-center  w-full h-full mt-10">
       <div className="w-[90%] gap-10 ">
@@ -16,6 +16,13 @@ const Video = ({ video }) => {
             <source src={video} type="video/mp4" />
           </video>
         </div>
+        <Link
+          className="mt-10 text-xl md:text-2xl  text-green-950 underline hover:text-green-700"
+          href={link}
+        >
+          {heading}
+        </Link>
+        <p className="my-4 text-black font-normal">{description}</p>
       </div>
     </div>
   );

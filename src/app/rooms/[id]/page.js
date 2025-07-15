@@ -1,16 +1,17 @@
 import EditRoomDetails from "@/components/EditRoomDetails";
 import Layout from "@/components/Layout";
-import { error } from "console";
 import React from "react";
+import { headers } from "next/headers";
 
 const getRoomById = async (id) => {
+  const headersList = headers();
+  const host = headersList.get("host");
+  const protocol = host?.includes("localhost") ? "http" : "https";
+
   try {
-    const res = await fetch(
-      `${process.env.API_BASE_URL}/api/executivebeds/${id}`,
-      {
-        cache: "no-store",
-      }
-    );
+    const res = await fetch(`${protocol}://${host}/api/executivebeds/${id}`, {
+      cache: "no-store",
+    });
 
     if (!res.ok) throw new Error("Failed to fetch a room");
 
@@ -21,6 +22,7 @@ const getRoomById = async (id) => {
     return null;
   }
 };
+
 export default async function RoomDetails({ params }) {
   const { id } = params;
   const data = await getRoomById(id);
