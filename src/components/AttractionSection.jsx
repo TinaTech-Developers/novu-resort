@@ -194,7 +194,7 @@ export function AttractionsSection() {
       </div>
 
       {/* Map */}
-      <MapContainer
+      {/* <MapContainer
         center={[-18.27, 32.76]}
         zoom={10}
         scrollWheelZoom={false}
@@ -209,7 +209,7 @@ export function AttractionsSection() {
             <Popup>{item.name}</Popup>
           </Marker>
         ))}
-      </MapContainer>
+      </MapContainer> */}
     </div>
   );
 }
