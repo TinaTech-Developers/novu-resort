@@ -18,17 +18,18 @@ async function OrderDetails({ params }) {
   const { id } = params;
   const { reservations } = await getResById(id);
 
-  let { fullname, email, period, message, deptdate, arrivaldate } =
+  let { surname, email, period, message, total, deptdate, arrivaldate } =
     reservations;
 
   return (
     <>
       <ResApprovalForm
         id={id}
-        fullname={fullname}
+        surname={surname}
         email={email}
         period={period}
         message={message}
+        total={total}
         arrivaldate={arrivaldate}
         deptdate={deptdate}
       />

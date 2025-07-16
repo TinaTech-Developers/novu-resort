@@ -3,7 +3,7 @@ import React from "react";
 function Table({ id, date, description, budget, amount, vat }) {
   return (
     <>
-      <tr key={id} className="grid grid-cols-1 md:grid-cols-12">
+      <tr key={id} className="grid grid-cols-1 md:grid-cols-12 text-gray-900">
         <td className="col-span-2 text-center border border-black border-r-[1px] border-t-0  text-sm">
           {date}
         </td>

@@ -103,7 +103,7 @@ function Expenditure() {
   return (
     <div className="p-5 w-full">
       <div className="flex-wrap md:flex items-center justify-between   ">
-        <h1 className="font-semibold mb-4">Expenditure</h1>
+        <h1 className="font-semibold mb-4 text-gray-900">Expenditure</h1>
         <FillButton
           name={"Add Expenditure"}
           link={"/"}
@@ -111,17 +111,17 @@ function Expenditure() {
         />
       </div>
       <table className="">
-        <tr className="grid grid-cols-1 md:grid-cols-12 font-semibold bg-amber-600 text-sm  border border-black">
+        <tr className="grid grid-cols-1 md:grid-cols-12 font-semibold bg-amber-600 text-sm text-gray-900  border border-black">
           <th className="col-span-2 border-r-[1px] border-black text-center capitalize">
             Date
           </th>
-          <th className="col-span-6 border-r-[1px] border-black text-center capitalize">
+          <th className="col-span-6 border-r-[1px] border-black text-center capitalize py-2">
             description of Expensises
           </th>
-          <th className="col-span-2 border-r-[1px] border-black text-center capitalize">
+          <th className="col-span-2 border-r-[1px] border-black text-center capitalize py-2">
             Budget
           </th>
-          <th className="col-span-1 border-r-[1px] border-black text-center capitalize">
+          <th className="col-span-1 border-r-[1px] border-black text-center capitalize py-2">
             Actual Amount
           </th>
           <th className="col-span-1 text-center capitalize">Var</th>

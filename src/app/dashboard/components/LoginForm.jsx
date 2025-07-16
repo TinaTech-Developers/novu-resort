@@ -36,20 +36,20 @@ export default function LoginForm() {
     <div className="flex items-center justify-center h-screen w-full">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-10 items-center justify-center w-96 h-auto py-10  shadow-2xl rounded-lg"
+        className="flex flex-col gap-10 items-center justify-center w-96 h-auto py-10 text-white  shadow-2xl rounded-lg"
       >
         <h1 className="text-4xl font-semibold text-amber-950">Login</h1>
         <input
           onChange={(e) => setEmail(e.target.value)}
           type="email"
           placeholder="Email"
-          className="w-[90%] bg-amber-600 bg-opacity-20 p-2 outline-none text-center text-gray-700"
+          className="w-[90%] bg-amber-600 bg-opacity-20 p-2 outline-none text-center text-white"
         />
         <input
           onChange={(e) => setPassword(e.target.value)}
           type="password"
           placeholder="Password"
-          className="w-[90%] bg-amber-600 bg-opacity-20 p-2 outline-none text-center text-gray-700"
+          className="w-[90%] bg-amber-600 bg-opacity-20 p-2 outline-none text-center text-white"
         />
         <button
           type="submit"

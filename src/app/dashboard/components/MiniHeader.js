@@ -14,7 +14,7 @@ function MiniHeader() {
   return (
     <div>
       <hr className="bg-white p-6" />
-      <div className=" md:flex items-start gap-6 mt-2 cursor-pointer list-none px-4  ">
+      <div className=" md:flex items-start gap-6 mt-2 cursor-pointer list-none px-4 text-gray-800">
         <Link
           onClick={() => updateToggle(1)}
           href={""}

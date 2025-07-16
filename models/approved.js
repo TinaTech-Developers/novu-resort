@@ -2,11 +2,12 @@ import mongoose, { Schema } from "mongoose";
 
 const approvedSchema = new Schema(
   {
-    fullname: String,
+    surname: String,
     message: String,
     email: String,
     arrivaldate: String,
     deptdate: String,
+    total: String,
   },
   { timestamps: true }
 );

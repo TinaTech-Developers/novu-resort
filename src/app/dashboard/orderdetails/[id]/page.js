@@ -19,12 +19,12 @@ async function OrderDetailz({ params }) {
   const { id } = params;
   const { orders } = await getOrderById(id);
 
-  const { fullname, email, period, newName, payment, newPrice } = orders;
+  const { surname, email, period, newName, payment, newPrice } = orders;
   return (
     <>
       <OrderApprovalForm
         id={id}
-        fullname={fullname}
+        surname={surname}
         email={email}
         period={period}
         newName={newName}

@@ -6,7 +6,7 @@ function FillButton({ name, link, onClick }) {
       type="submit"
       onClick={onClick}
       href={link}
-      className=" border relative py-2 px-6 z-20 bg-transparent text-gray-600 transition-colors before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-full before:origin-top-left before:scale-x-0 before:bg-green-900 before:transition-transform before:duration-300 before:content-[''] hover:text-white before:hover:scale-x-100"
+      className=" border relative py-2 px-6 z-20 bg-transparent text-gray-900 border-green-900 transition-colors before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-full before:origin-top-left before:scale-x-0 before:bg-green-900 before:transition-transform before:duration-300 before:content-[''] hover:text-white before:hover:scale-x-100"
     >
       {name}
     </Link>

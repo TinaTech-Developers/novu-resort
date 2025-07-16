@@ -11,7 +11,7 @@ import Header from "../components/Header";
 function Customers() {
   const [reservations, setReservations] = useState([]);
 
-  const RSV_URL = "http://localhost:3000/api/reservations";
+  const RSV_URL = "/api/reservations";
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(RSV_URL);
@@ -29,36 +29,50 @@ function Customers() {
         <div className="bg-gray-100 min-h-screen w-full">
           <hr className="bg-white mt-4" />
           <div className="p-4">
-            <h1 className="py-4 font-semibold">Recent Orders</h1>
+            <h1 className="py-4 font-semibold text-gray-800 pt-10">
+              Recent Orders
+            </h1>
             <div className="w-full p-4 border rounded-lg bg-white overflow-y-auto">
-              <div className="my-3 p-2 font-semibold grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 justify-between cursor-pointer">
+              <div className="my-3 p-2 font-semibold grid md:grid-cols-5 sm:grid-cols-3 grid-cols-2 justify-between cursor-pointer bg-gray-800 text-white py-2">
                 <span>Name</span>
                 <span className="sm:text-left text-right">Email</span>
                 <span className="hidden md:grid">Period</span>
-                <span className="hidden md:grid">Note</span>
+                <span className="hidden md:grid pl-6">Amount</span>
+                <span className="hidden md:grid  text-left">Action</span>
               </div>
               {reservations?.map((resv) => (
-                <ul key={resv._id}>
-                  <li className="bg-gray-50 hover:bg-gray-200 rounded-lg my-3 p-2 grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 items-center justify-between cursor-pointer ">
+                <ul key={resv._id} className="w-full text-sm text-black">
+                  <li className="bg-gray-50 hover:bg-gray-200 rounded-lg my-3 text-black p-2 grid md:grid-cols-5 sm:grid-cols-3 grid-cols-2 items-center justify-between cursor-pointer ">
                     <div className="flex items-center">
                       <div className="bg-amber-50 p-3 rounded-lg">
                         <BsPersonFill className="text-amber-800" />
                       </div>
-                      <p className="pl-4">{resv.fullname}</p>
+                      <p className="pl-4 text-black">{resv.surname}</p>
                     </div>
-                    <p className="text-gray-500 sm:text-left text-right">
-                      {resv.email}
-                    </p>
+                    <p className=" sm:text-left text-right ">{resv.email}</p>
                     <p className="hidden md:flex">
-                      {resv.arrivaldate} - {resv.deptdate}
+                      {new Date(resv.arrivaldate).toLocaleDateString("en-GB", {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric",
+                      })}{" "}
+                      -{" "}
+                      {new Date(resv.deptdate).toLocaleDateString("en-GB", {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric",
+                      })}
                     </p>
+
                     <div className="sm:flex hidden justify-between items-center  ">
-                      <p className="truncate text-ellipsis w-32">
-                        {resv.message}
+                      <p className="truncate text-ellipsis pl-6 font-semibold w-32">
+                        ${resv.total}.00
                       </p>
+                    </div>
+                    <div className="flex items-center  space-x-6">
                       <RemoveButton id={resv._id} />
                       <Link href={`/dashboard/resdetails/${resv._id}`}>
-                        <BsThreeDotsVertical />
+                        <BsThreeDotsVertical size={"1.4rem"} />
                       </Link>
                     </div>
                   </li>

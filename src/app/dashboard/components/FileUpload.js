@@ -8,8 +8,9 @@ import { UploadDropzone, Uploader } from "../../../app/lib/uploadthing";
 import { FileText, Pencil, Plus } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import FillButton from "@/components/FillButton";
 export default function FileUpload() {
-  const [projectName, setProjectName] = useState("");
+  const [activityName, setActivityName] = useState("");
   const [company, setCompany] = useState("");
   const [description, setDescription] = useState("");
   const inputRef = useRef(null);
@@ -54,8 +55,8 @@ export default function FileUpload() {
 
   return (
     <div>
-      <h1 className="text-xl font-semibold px-14 pt-10">
-        Add New Image to Gallery
+      <h1 className="text-xl font-semibold px-14 pt-10 text-gray-900">
+        Add New Image to Activities
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 px-4 mx-10 ">
         <div className="flex justify-center items-center mx-auto">
@@ -108,19 +109,19 @@ export default function FileUpload() {
           </div>
           <form
             // onSubmit={handleSubmit}
-            className=" flex flex-col w-[45rem] h-[100%] px-10 "
+            className=" flex flex-col w-[45rem] h-[100%] px-10 gap-4"
           >
             <div className="grid grid-cols-5 w- gap-4 pt-4">
               <input
-                onChange={(e) => setProjectName(e.target.value)}
-                value={projectName}
+                onChange={(e) => setActivityName(e.target.value)}
+                value={activityName}
                 type="text"
                 name="title"
                 placeholder="Project title"
-                className="col-span-5 outline-none border  p-2   text-gray-700"
+                className="col-span-5 outline-none border  p-2   text-gray-700 bg-white border-gray-300 rounded-lg mt-9"
               />
             </div>
-            <div className="grid grid-cols-5 gap-4 py-2">
+            {/* <div className="grid grid-cols-5 gap-4 py-2">
               <input
                 onChange={(e) => setCompany(e.target.value)}
                 value={company}
@@ -129,14 +130,14 @@ export default function FileUpload() {
                 placeholder="Company"
                 className="col-span-5 outline-none border text-gray-700 p-2"
               />
-            </div>
+            </div> */}
 
             <div className="grid grid-cols-5 gap-4  pb-5">
               <textarea
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="description"
                 rows={5}
-                className=" py-2 px-4  w-lg outline-none  border text-gray-700 col-span-5"
+                className=" py-2 px-4  w-lg outline-none  border text-gray-700 col-span-5  bg-white border-gray-300 rounded-lg"
                 name="description"
               ></textarea>
             </div>
@@ -148,10 +149,10 @@ export default function FileUpload() {
               className="col-span-5 outline-none border text-gray-700 p-2"
             />
             <button
-              className=" flex items-end justify-end z-20 py-10"
+              className=" flex items-end justify-end z-20 py-5"
               onClick={() => router.push("/dashboard/gallery")}
             >
-              {/* <FillButton name={"Save"} link={""} onClick={handleSubmit} /> */}
+              <FillButton name={"Save"} link={""} onClick={""} />
             </button>
 
             <ToastContainer />

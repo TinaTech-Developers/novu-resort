@@ -4,16 +4,17 @@ import connectMongoDB from "../../../../libs/mongodb";
 import Approved from "../../../../models/approved";
 
 export async function POST(request) {
-  const { fullname, message, email, arrivaldate, deptdate } =
+  const { surname, message, email, arrivaldate, deptdate, total } =
     await request.json();
   await connectMongoDB();
 
   await Approved.create({
-    fullname,
+    surname,
     message,
     email,
     arrivaldate,
     deptdate,
+    total,
   });
   return NextResponse.json({ message: "Order Approved" }, { status: 201 });
 }

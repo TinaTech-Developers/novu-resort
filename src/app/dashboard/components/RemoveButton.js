@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
-import { MdOutlineDeleteForever } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 
 function RemoveButton({ id }) {
   const router = useRouter();
@@ -20,7 +20,7 @@ function RemoveButton({ id }) {
   };
   return (
     <button onClick={removeReservation}>
-      <MdOutlineDeleteForever size={"1.6rem"} color="red" />
+      <MdDelete size={"1.6rem"} color="red" />
     </button>
   );
 }

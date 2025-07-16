@@ -8,14 +8,14 @@ import Header from "./Header";
 
 function OrderApprovalForm({
   id,
-  fullname,
+  surname,
   email,
   period,
   newName,
   payment,
   newPrice,
 }) {
-  const [name, setName] = useState(fullname);
+  const [name, setName] = useState(surname);
   const [newEmail, setNewEmail] = useState(email);
   const [newPeriod, setNewPeriod] = useState(period);
   const [newRoomName, setNewRoomName] = useState(newName);
@@ -35,7 +35,7 @@ function OrderApprovalForm({
           "Content-type": "application/json",
         },
         body: JSON.stringify({
-          fullname,
+          surname,
           email,
           period,
           newName,
@@ -72,7 +72,7 @@ function OrderApprovalForm({
               <div className="grid grid-cols-4 gap-4 py-4 mx-10">
                 <label className="col-span-1 font-semibold">Name :</label>
                 <input
-                  value={fullname}
+                  value={surname}
                   type="text"
                   name="name"
                   className="col-span-3 text-gray-500"

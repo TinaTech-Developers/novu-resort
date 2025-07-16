@@ -6,7 +6,7 @@ import Sidebar from "./Sidebar";
 export default function DashbordLayout({ children }) {
   return (
     <AuthProvider>
-      <div className="flex">
+      <div className="flex bg-slate-50">
         <div>
           <Sidebar />
         </div>

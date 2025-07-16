@@ -8,8 +8,8 @@ function Sidebar() {
   let links = [
     { icon: <RxDashboard size={20} />, link: "/dashboard/home" },
     { icon: <RxPerson size={20} />, link: "/dashboard/reservations" },
-    { icon: <HiOutlineShoppingBag size={20} />, link: "/dashboard/orders" },
-    { icon: <FiSettings size={20} />, link: "/dashboard/settings" }, // fallback icon
+    // { icon: <HiOutlineShoppingBag size={20} />, link: "/dashboard/orders" },
+    { icon: <FiSettings size={20} />, link: "/dashboard/settings" },
     ,
   ];
 
