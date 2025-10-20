@@ -44,7 +44,7 @@ function Adventure2() {
         >
           <Video
             video={
-              "https://utfs.io/f/M8crfG3am8lfL9D9rm9uKAaL1TB6NQhjD0kumYc2sR5vVnlz"
+              "https://5puqigze8f.ufs.sh/f/M8crfG3am8lf3Tk3qPzH3wyCFegmMR7iu0Zxq8tkJLUdaNPo"
             }
             link={"/inyanga"}
           />
@@ -109,7 +109,7 @@ function Adventure2() {
         >
           <Video
             video={
-              "https://utfs.io/f/M8crfG3am8lfL9D9rm9uKAaL1TB6NQhjD0kumYc2sR5vVnlz"
+              "https://5puqigze8f.ufs.sh/f/M8crfG3am8lf3Tk3qPzH3wyCFegmMR7iu0Zxq8tkJLUdaNPo"
             }
             link={"/inyanga"}
           />
