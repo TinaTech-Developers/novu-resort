@@ -103,7 +103,9 @@ function TestimonialCard({ name, quote }) {
       transition={{ duration: 0.8 }}
       className="bg-white rounded-xl shadow-lg p-6 italic text-gray-800"
     >
-      <p>"{quote}"</p>
+      <p>
+        <p>&quot;{quote}&quot;</p>
+      </p>
       <p className="mt-4 font-semibold text-green-900 text-right">- {name}</p>
     </motion.div>
   );
