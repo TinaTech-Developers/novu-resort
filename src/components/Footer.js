@@ -1,85 +1,119 @@
+"use client";
 import React from "react";
 import Link from "next/link";
-import { SlArrowRight } from "react-icons/sl";
 import { FaSquareWhatsapp, FaXTwitter } from "react-icons/fa6";
 import { IoLogoFacebook } from "react-icons/io";
 import { FaLinkedin } from "react-icons/fa";
+import { SlArrowRight } from "react-icons/sl";
 
-function Footer() {
+export default function Footer() {
+  const quickLinks = [
+    { label: "About Us", href: "/" },
+    { label: "Terms & Conditions", href: "/" },
+    { label: "Gallery", href: "/" },
+    { label: "Activities", href: "/" },
+    { label: "Contact Us", href: "/" },
+  ];
+
   return (
-    <div>
-      <div className="h-full grid grid-cols-1 md:grid-cols-3 md:w-full bg-gray-700 py-14 md:h-72 ">
-        <div className="flex flex-col items-start px-20 md:px-32 justify mt-5 text-white ">
-          <h1 className="text-white text-xl font-semibold p-2">Explore us!</h1>
-          <div className="flex items-center justify-between gap-1">
-            <SlArrowRight color="white" size={"0.8rem"} />
-            <Link href={"/"}>About Us</Link>
-          </div>
-          <div className="flex items-center justify-between gap-1">
-            <SlArrowRight color={"white"} size={"0.8rem"} />
-            <Link href={"/"}>Terms & Conditions</Link>
-          </div>
-          <div className="flex items-center justify-between gap-1">
-            <SlArrowRight color={"white"} size={"0.8rem"} />
-            <Link href={"/"}>Newss & Articles</Link>
-          </div>
-          <div className="flex items-center justify-between gap-1">
-            <SlArrowRight color={"white"} size={"0.8rem"} />
-            <Link href={"/"}>How we work</Link>
-          </div>
-          <div className="flex items-center justify-between gap-1">
-            <SlArrowRight color={"white"} size={"0.8rem"} />
-            <Link href={"/"}>Contact Us</Link>
-          </div>
-        </div>
-        <div className=" flex flex-col px-20 md:px-32 gap-2 md:p-4 text-gray-500 ">
-          <h1 className=" text-white font-bold text-xl p-2">Contact us!</h1>
-          <p className="text-sm text-white">+263 77 224 1125 </p>
-          <p className="text-sm text-white">+263 77 214 6008</p>
-          <p className="text-sm text-white">+263 71 221 4219</p>
-          <p className="text-sm text-white">novuresort@gmail.com</p>
+    <footer className="relative bg-gradient-to-b from-green-950 to-gray-900 text-white">
+      {/* Decorative background layer */}
+      <div className="absolute inset-0 opacity-20 bg-[url('/footer-bg.jpg')] bg-cover bg-center"></div>
 
-          <div></div>
-        </div>
-        <div className="flex flex-col items-center px-20 text-white mt-5 md:px-5">
-          <h1 className="text-white text-xl font-semibold p-2">Follow us</h1>
-          <p>
-            Or just keep up to date with what is happening on any of our social
-            pages
+      <div className="relative max-w-7xl mx-auto px-8 py-16 grid grid-cols-1 md:grid-cols-4 gap-10">
+        {/* Resort Logo & Intro */}
+        <div>
+          <h2 className="text-2xl font-bold text-green-400 mb-3">
+            Novu Resort
+          </h2>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            Nestled in the heart of Nyanga’s lush mountains, Novu Resort offers
+            a peaceful escape surrounded by breathtaking nature and timeless
+            luxury. Relax, reconnect, and rediscover serenity.
           </p>
-          <div className="flex items-start justify-between gap-2 mt-2">
-            <Link href={"/"}>
-              <FaSquareWhatsapp size={25} color="green" />
+        </div>
+
+        {/* Quick Links */}
+        <div>
+          <h3 className="text-xl font-semibold mb-4 text-green-400">Explore</h3>
+          <ul className="space-y-3 text-gray-300">
+            {quickLinks.map((link, idx) => (
+              <li key={idx}>
+                <Link
+                  href={link.href}
+                  className="flex items-center gap-2 hover:text-green-400 transition"
+                >
+                  <SlArrowRight size={13} />
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Contact Info */}
+        <div>
+          <h3 className="text-xl font-semibold mb-4 text-green-400">Contact</h3>
+          <div className="space-y-2 text-gray-300">
+            <p>📍 Nyanga, Zimbabwe</p>
+            <p>📞 +263 77 224 1125</p>
+            <p>📞 +263 77 214 6008</p>
+            <p>✉️ novuresort@gmail.com</p>
+          </div>
+        </div>
+
+        {/* Social & Updates */}
+        <div>
+          <h3 className="text-xl font-semibold mb-4 text-green-400">
+            Connect With Us
+          </h3>
+          <p className="text-gray-300 text-sm mb-4">
+            Stay updated with our latest offers and events.
+          </p>
+          <div className="flex gap-4 mb-5">
+            <Link href="/" className="hover:text-green-500 transition">
+              <FaSquareWhatsapp size={24} />
             </Link>
-            <Link href={"/"}>
-              <IoLogoFacebook size={25} color="blue" />
+            <Link href="/" className="hover:text-blue-500 transition">
+              <IoLogoFacebook size={24} />
             </Link>
-            <Link href={"/"}>
-              <FaLinkedin size={25} color="blue" />
+            <Link href="/" className="hover:text-blue-400 transition">
+              <FaLinkedin size={24} />
             </Link>
-            <Link href={"/"}>
-              <FaXTwitter size={25} color="white" />
+            <Link href="/" className="hover:text-gray-300 transition">
+              <FaXTwitter size={24} />
             </Link>
           </div>
-          <p
-            className="text-sm text-white my-2
-          "
-          >
-            novuresort@gmail.com
-          </p>
-          {/* <p>Mobile: +263 71 247 1209 | +263 77 305 9753</p>*/}
-          {/* <p>Email: info@tinasoftnexus.co.zw</p> */}
+          <form className="flex bg-white/10 rounded-lg overflow-hidden border border-gray-700">
+            <input
+              type="email"
+              placeholder="Your email"
+              className="bg-transparent px-3 py-2 text-sm w-full outline-none placeholder-gray-400"
+            />
+            <button
+              type="submit"
+              className="bg-green-600 px-4 text-sm hover:bg-green-700 transition"
+            >
+              Subscribe
+            </button>
+          </form>
         </div>
       </div>
-      {/* <hr className=" w-[90%] mx-auto -translate-y-10" /> */}
 
-      <div className="flex items-center justify-center w-full h-10 bg-gray-900">
-        <p className="text-white text-sm">
-          Copyright 2023 by <Link href={"/"}>TinaSoft Nexus</Link>
+      {/* Bottom Bar */}
+      <div className="relative border-t border-gray-700 mt-10 py-4 text-center text-gray-400 text-sm">
+        <p>
+          © {new Date().getFullYear()} Novu Resort. All rights reserved. <br />
+          Crafted by{" "}
+          <Link
+            href="https://tinasoftnexus.co.zw"
+            target="_blank"
+            className="text-green-400 hover:text-green-300 transition"
+          >
+            TinaSoft Nexus
+          </Link>
         </p>
       </div>
-    </div>
+    </footer>
   );
 }
-
-export default Footer;
