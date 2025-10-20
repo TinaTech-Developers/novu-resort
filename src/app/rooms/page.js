@@ -4,6 +4,7 @@ import React from "react";
 // import ExecutiveBeds from "./_components/ExecutiveBeds";
 import MiniHeader from "./_components/MiniHeader";
 import ApartmentAvailability from "./_components/ApartmentAvailability";
+import AccommodationExperiencePage from "./_components/AccommodationExperiencePage(";
 
 function Rooms() {
   return (
@@ -11,6 +12,7 @@ function Rooms() {
       <SubHero head={"Our Laxurious Rooms"} />
       <ApartmentAvailability />
       <MiniHeader />
+      <AccommodationExperiencePage />
     </Layout>
   );
 }

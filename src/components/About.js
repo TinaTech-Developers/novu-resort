@@ -38,22 +38,28 @@ function About() {
           transition={{ duration: 0.7 }}
         >
           <p className="text-black font-normal text-left text-sm">
-            Welcome to Novu Resort, your ultimate destination for relaxation and
-            rejuvenation. Nestled amidst the serene landscapes and breathtaking
-            views, our resort is a haven of tranquility, offering an escape from
-            the hustle and bustle of everyday life. We are about 18km from
-            Nyanga Centre or Nyangani Mountain about 2.7km from Troutbeck
-            Resort. Our story began when our founder, a passionate traveller,
-            fell in love with this idyllic location. He envisioned a place where
-            people could experience the beauty of nature while enjoying the
-            comforts of a home away from home. Thus, Novu Resort was born.
-            Today, we offer a range of luxurious accommodation e.g. spacious
-            family homes, standard double room, standard twin room, executive
-            suites, all designed with your comfort in mind. Our facilities
-            include a restaurant serving local and international cuisine,
-            conference room and a variety of recreational activities for all
-            ages e.g quad biking, team building exercise, guided tours / walks
-            and game viewing by arrangement with national parks.
+            Welcome to Novu Resort — your ultimate destination for relaxation
+            and rejuvenation. Nestled amidst serene landscapes and breathtaking
+            views, our resort is a haven of tranquility, offering a perfect
+            escape from the hustle and bustle of everyday life. <br />
+            <br />
+            We are located approximately 15 km from Nyanga Centre and about 2.5
+            km from Troutbeck Resort, near the majestic Nyangani Mountain.
+            <br />
+            <br />
+            Our story began when our founder, a passionate traveler, fell in
+            love with this idyllic location. He envisioned a place where guests
+            could experience the beauty of nature while enjoying the comforts of
+            a home away from home — and thus, Novu Resort was born. <br />
+            <br />
+            Today, we offer a range of luxurious accommodations, including
+            spacious family homes (2- and 3-bedroom), and executive suites, all
+            designed with your comfort in mind. Our facilities feature a
+            restaurant serving both local and international cuisine, a
+            well-equipped conference room, and a variety of recreational
+            activities for all ages — such as quad biking, team-building
+            exercises, guided tours and walks, and game viewing (by arrangement
+            with National Parks).
           </p>
         </motion.div>
       </div>
@@ -74,7 +80,7 @@ function About() {
           playsInline
         >
           <source
-            src="https://5puqigze8f.ufs.sh/f/M8crfG3am8lfN622jmx0cTGyLvK3WJ9zrOo7egmwQVMpZCPE"
+            src="https://5puqigze8f.ufs.sh/f/M8crfG3am8lf3Tk3qPzH3wyCFegmMR7iu0Zxq8tkJLUdaNPo"
             type="video/mp4"
           />
           Your browser does not support the video tag.

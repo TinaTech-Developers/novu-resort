@@ -50,6 +50,7 @@ function RoomUpload() {
   };
 
   return (
+    
     <div className="grid md:flex gap-10 mx-4 mt-10 pb-20">
       <div className="border border-gray-500 mt-5 pb-14 w-[50%] h-[22rem]  bg-blue-200 p-10">
         <div className="col-span-full h-[22rem]">
