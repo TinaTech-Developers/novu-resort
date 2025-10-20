@@ -18,43 +18,34 @@ function isHoliday(date) {
   return zimbabweHolidays.includes(formatted);
 }
 
-export async function GET(request, { params }) {
-  const { id } = params;
+export async function GET(request) {
   const { searchParams } = new URL(request.url);
   const checkIn = searchParams.get("checkIn");
   const checkOut = searchParams.get("checkOut");
 
   await connectMongoDB();
-  const room = await Room.findById(id);
-  if (!room)
-    return NextResponse.json({ error: "Room not found" }, { status: 404 });
+  const rooms = await Room.find();
 
-  // Adjust price if holiday
-  let adjustedPrice = room.price;
-  if (isHoliday(new Date())) adjustedPrice += 50;
+  const inDate = new Date(checkIn);
+  const outDate = new Date(checkOut);
 
-  // Check availability (if checkIn and checkOut provided)
-  let isAvailable = true;
-  if (checkIn && checkOut) {
-    const inDate = new Date(checkIn);
-    const outDate = new Date(checkOut);
+  const today = new Date();
+  const holiday = isHoliday(today);
 
-    isAvailable = !room.bookings.some(
+  const availableRooms = rooms.filter((room) => {
+    const booked = room.bookings.some(
       (b) =>
         (inDate >= b.checkIn && inDate < b.checkOut) ||
         (outDate > b.checkIn && outDate <= b.checkOut) ||
         (inDate <= b.checkIn && outDate >= b.checkOut)
     );
-  }
+    return !booked;
+  });
 
-  return NextResponse.json(
-    {
-      room: {
-        ...room.toObject(),
-        price: adjustedPrice,
-        available: isAvailable,
-      },
-    },
-    { status: 200 }
-  );
+  const adjusted = availableRooms.map((r) => ({
+    ...r.toObject(),
+    price: holiday ? r.price + 50 : r.price,
+  }));
+
+  return NextResponse.json({ rooms: adjusted });
 }

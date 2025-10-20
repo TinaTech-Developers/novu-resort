@@ -21,9 +21,10 @@ export default function TwoBeds() {
   useEffect(() => {
     async function fetchRooms() {
       try {
-        const res = await fetch("/api/twobed");
+        const res = await fetch("/api/rooms?roomType=two-bed");
         const data = await res.json();
-        setTwoBed(data.twobeds || []);
+        console.log(data); // Debug
+        setTwoBed(data.rooms || []); // ✅ fixed here
       } catch (error) {
         console.error("Error fetching rooms:", error);
       } finally {
@@ -127,7 +128,7 @@ function LuxuryRoomSlide({ room }) {
 
         {/* Button */}
         <Link
-          href={`/rooms/twobeds/${room._id}`}
+          href={`/rooms/${room._id}`}
           className="bg-green-800 hover:bg-green-700 text-white py-2 px-6 rounded-md text-sm font-medium transition duration-300 w-fit"
         >
           View Details

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import connectMongoDB from "../../../../libs/mongodb";
-import Room from "../../../../models/rooms";
+import Room from "../../../../../models/rooms";
+import connectMongoDB from "../../../../../libs/mongodb";
 
 // 🇿🇼 Zimbabwe Public Holidays
 const zimbabwePublicHolidays = [
@@ -14,61 +14,68 @@ const zimbabwePublicHolidays = [
   "11-20", // Custom holiday
 ];
 
-// ✅ Check if date is a holiday
+// ✅ Check if current date is a holiday
 function isHoliday(date) {
   const formatted = date.toISOString().slice(5, 10); // MM-DD
   return zimbabwePublicHolidays.includes(formatted);
 }
 
-// ✅ CREATE ROOM
+// ✅ CREATE a new Room
 export async function POST(request) {
   try {
     const { name, description, price, imageUrl, roomType } =
       await request.json();
 
     await connectMongoDB();
-    await Room.create({ name, description, price, imageUrl, roomType });
+    const room = await Room.create({
+      name,
+      description,
+      price,
+      imageUrl,
+      roomType,
+    });
 
     return NextResponse.json(
-      { message: "Room created successfully" },
+      { success: true, message: "Room created successfully", room },
       { status: 201 }
     );
   } catch (error) {
     console.error("Error creating room:", error);
     return NextResponse.json(
-      { message: "Failed to create room" },
+      { success: false, message: "Failed to create room" },
       { status: 500 }
     );
   }
 }
 
-// ✅ GET ROOMS (filtered by roomType + holiday price adjustment)
+// ✅ GET all Rooms (with optional type filter)
 export async function GET(request) {
   try {
     await connectMongoDB();
 
     const { searchParams } = new URL(request.url);
-    const roomType = searchParams.get("roomType"); // 👈 Use `roomType` instead of `type`
-
-    // 👇 Build query: only include roomType if specified
-    const query = roomType ? { roomType } : {};
+    const type = searchParams.get("type") || searchParams.get("roomType"); // supports both
+    const query = type ? { roomType: type } : {};
 
     const rooms = await Room.find(query).sort({ createdAt: -1 });
 
     const today = new Date();
     const holiday = isHoliday(today);
 
-    // 👇 Adjust price dynamically for holidays
+    // 👇 Add dynamic price adjustment for holidays
     const adjustedRooms = rooms.map((r) => ({
       ...r.toObject(),
       price: holiday ? r.price + 50 : r.price,
     }));
 
-    return NextResponse.json({ rooms: adjustedRooms }, { status: 200 });
+    return NextResponse.json(
+      { success: true, rooms: adjustedRooms },
+      { status: 200 }
+    );
   } catch (error) {
     console.error("Error fetching rooms:", error);
     return NextResponse.json(
-      { message: "Failed to fetch rooms" },
+      { success: false, message: "Failed to fetch rooms" },
       { status: 500 }
     );
   }

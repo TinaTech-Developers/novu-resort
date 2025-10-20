@@ -9,7 +9,7 @@ const getRoomById = async (id) => {
   const protocol = host?.includes("localhost") ? "http" : "https";
 
   try {
-    const res = await fetch(`${protocol}://${host}/api/executivebeds/${id}`, {
+    const res = await fetch(`${protocol}://${host}/api/rooms/${id}`, {
       cache: "no-store",
     });
 
