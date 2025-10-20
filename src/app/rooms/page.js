@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import MiniHeader from "./_components/MiniHeader";
 import ApartmentAvailability from "./_components/ApartmentAvailability";
 import ListOfAvailableApartments from "./_components/ListOfAvailableApartments";
-import LuxuryExperiencePage from "./_components/AccommodationExperiencePage(";
+import LuxuryExperiencePage from "./_components/AccommodationExperiencePage";
 
 function Rooms() {
   const [availableRooms, setAvailableRooms] = useState([]);
