@@ -149,7 +149,7 @@ function TestimonialCard({ name, quote }) {
       whileHover={{ scale: 1.02 }}
       className="bg-green-50 p-8 rounded-2xl shadow-lg"
     >
-      <p className="italic text-gray-800 text-lg">"{quote}"</p>
+      <p className="italic text-gray-800 text-lg">{quote}</p>
       <p className="mt-6 font-semibold text-green-900 text-right">- {name}</p>
     </motion.div>
   );

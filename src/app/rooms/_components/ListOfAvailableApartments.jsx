@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function ListOfAvailableApartments({ rooms }) {
   if (!rooms || rooms.length === 0) return null; // remain hidden if no rooms
@@ -17,7 +18,9 @@ export default function ListOfAvailableApartments({ rooms }) {
             key={room._id}
             className="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition flex flex-col"
           >
-            <img
+            <Image
+              height={200}
+              width={300}
               src={room.imageUrl}
               alt={room.name}
               className="w-full h-56 object-cover"
