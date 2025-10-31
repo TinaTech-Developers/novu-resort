@@ -19,42 +19,48 @@ function isHoliday(date) {
 }
 
 export async function GET(request, { params }) {
-  const { id } = params;
-  const { searchParams } = new URL(request.url);
-  const checkIn = searchParams.get("checkIn");
-  const checkOut = searchParams.get("checkOut");
+  try {
+    const { id } = params;
+    const { searchParams } = new URL(request.url);
+    const checkIn = searchParams.get("checkIn");
+    const checkOut = searchParams.get("checkOut");
 
-  await connectMongoDB();
-  const room = await Room.findById(id);
-  if (!room)
-    return NextResponse.json({ error: "Room not found" }, { status: 404 });
+    await connectMongoDB();
+    const room = await Room.findById(id);
+    if (!room)
+      return NextResponse.json({ message: "Room not found" }, { status: 404 });
 
-  // Adjust price if holiday
-  let adjustedPrice = room.price;
-  if (isHoliday(new Date())) adjustedPrice += 50;
+    let adjustedPrice = room.price;
+    if (isHoliday(new Date())) adjustedPrice += 50;
 
-  // Check availability (if checkIn and checkOut provided)
-  let isAvailable = true;
-  if (checkIn && checkOut) {
-    const inDate = new Date(checkIn);
-    const outDate = new Date(checkOut);
+    // Availability
+    let isAvailable = true;
+    if (checkIn && checkOut) {
+      const inDate = new Date(checkIn);
+      const outDate = new Date(checkOut);
+      isAvailable = !room.bookings.some(
+        (b) =>
+          (inDate >= b.checkIn && inDate < b.checkOut) ||
+          (outDate > b.checkIn && outDate <= b.checkOut) ||
+          (inDate <= b.checkIn && outDate >= b.checkOut)
+      );
+    }
 
-    isAvailable = !room.bookings.some(
-      (b) =>
-        (inDate >= b.checkIn && inDate < b.checkOut) ||
-        (outDate > b.checkIn && outDate <= b.checkOut) ||
-        (inDate <= b.checkIn && outDate >= b.checkOut)
+    return NextResponse.json(
+      {
+        room: {
+          ...room.toObject(),
+          price: adjustedPrice,
+          available: isAvailable,
+        },
+      },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("Error fetching room:", error);
+    return NextResponse.json(
+      { message: "Failed to fetch room" },
+      { status: 500 }
     );
   }
-
-  return NextResponse.json(
-    {
-      room: {
-        ...room.toObject(),
-        price: adjustedPrice,
-        available: isAvailable,
-      },
-    },
-    { status: 200 }
-  );
 }

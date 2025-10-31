@@ -8,13 +8,13 @@ import ListOfAvailableApartments from "./_components/ListOfAvailableApartments";
 import LuxuryExperiencePage from "./_components/AccommodationExperiencePage";
 
 function Rooms() {
-  const [availableRooms, setAvailableRooms] = useState([]);
+  const [rooms, setRooms] = useState([]);
 
   return (
     <Layout>
       <SubHero head={"Our Luxurious Rooms"} />
-      <ApartmentAvailability onResults={setAvailableRooms} />
-      <ListOfAvailableApartments rooms={availableRooms} />
+      <ApartmentAvailability onResults={setRooms} />
+      <ListOfAvailableApartments rooms={rooms} />
       <MiniHeader />
       <LuxuryExperiencePage />
     </Layout>

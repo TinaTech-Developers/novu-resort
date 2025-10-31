@@ -4,24 +4,23 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function ListOfAvailableApartments({ rooms }) {
-  if (!rooms || rooms.length === 0) return null; // remain hidden if no rooms
+  if (!rooms || rooms.length === 0) return null;
 
   return (
     <section className="max-w-6xl mx-auto py-16 px-4">
       <h2 className="text-3xl font-bold text-green-900 mb-10 text-center">
         Currently Available Apartments
       </h2>
-
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {rooms.map((room) => (
           <div
             key={room._id}
-            className="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition flex flex-col"
+            className="bg-white border rounded-lg overflow-hidden shadow-sm hover:shadow-md flex flex-col"
           >
             <Image
               height={200}
               width={300}
-              src={room.imageUrl}
+              src={room.imageUrl || "/placeholder.png"}
               alt={room.name}
               className="w-full h-56 object-cover"
             />

@@ -74,6 +74,7 @@ function EditRoomDetails({
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // ✅ Updated only this function to connect with /api/rooms/[id]/book
   const handleSubmit = async (e) => {
     e.preventDefault();
     const {
@@ -93,10 +94,22 @@ function EditRoomDetails({
     if (+adultsNo + +kidsNo > 6) return toast.error("Only 6 guests allowed");
 
     try {
-      const res = await fetch("/api/reservations", {
+      const res = await fetch(`/api/rooms/${id}/book`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, book: name, price, total }),
+        body: JSON.stringify({
+          fullName,
+          surname,
+          address,
+          city,
+          country,
+          email,
+          adultsNo: Number(adultsNo),
+          kidsNo: Number(kidsNo),
+          checkIn: arrivaldate,
+          checkOut: deptdate,
+          total: Number(total),
+        }),
       });
 
       if (res.ok) {
@@ -117,7 +130,7 @@ function EditRoomDetails({
         setTotal("");
       } else {
         const { message } = await res.json();
-        toast.error(message);
+        toast.error(message || "Booking failed.");
       }
     } catch (err) {
       toast.error("Server error. Try again later.");
@@ -154,17 +167,19 @@ function EditRoomDetails({
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
           >
-            {[imageUrl, image1, image2, image3].map((src, idx) => (
-              <SwiperSlide key={idx}>
-                <Image
-                  src={src}
-                  alt={`Room image ${idx}`}
-                  width={800}
-                  height={500}
-                  className="rounded-xl shadow-lg w-full h-[450px] object-cover"
-                />
-              </SwiperSlide>
-            ))}
+            {[imageUrl, image1, image2, image3]
+              .filter(Boolean)
+              .map((src, idx) => (
+                <SwiperSlide key={idx}>
+                  <Image
+                    src={src}
+                    alt={`Room image ${idx}`}
+                    width={800}
+                    height={500}
+                    className="rounded-xl shadow-lg w-full h-[450px] object-cover"
+                  />
+                </SwiperSlide>
+              ))}
           </Swiper>
 
           <div className="bg-white rounded-2xl shadow-xl p-6 space-y-8">

@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Navigation,
   Pagination,
@@ -33,7 +35,6 @@ function ExecutiveBeds() {
   useEffect(() => {
     async function fetchData() {
       try {
-        // 👇 New unified API call with filter
         const response = await fetch("/api/rooms?roomType=Executive");
         const data = await response.json();
         setRooms(data.rooms || []);
@@ -59,93 +60,111 @@ function ExecutiveBeds() {
     );
 
   return (
-    <StyledSwiper
-      modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
-      spaceBetween={50}
-      pagination={{ clickable: true }}
-      autoplay={{ delay: 25000, disableOnInteraction: false }}
-      loop
-      breakpoints={{
-        640: { slidesPerView: 1, spaceBetween: 20 },
-        768: { slidesPerView: 2, spaceBetween: 30 },
-        1024: { slidesPerView: 2, spaceBetween: 40 },
-      }}
-    >
-      {rooms.map((room) => (
-        <SwiperSlide key={room._id}>
-          <ExecutiveBedsCard room={room} />
-        </SwiperSlide>
-      ))}
-    </StyledSwiper>
+    <div className="relative bg-gradient-to-b from-white to-green-50 py-10">
+      <div className="max-w-7xl mx-auto px-6">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-green-900 text-center mb-10 tracking-tight">
+          Executive Rooms
+        </h2>
+
+        <StyledSwiper
+          modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+          spaceBetween={30}
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 10000, disableOnInteraction: false }}
+          loop
+          breakpoints={{
+            640: { slidesPerView: 1, spaceBetween: 20 },
+            768: { slidesPerView: 2, spaceBetween: 30 },
+            1024: { slidesPerView: 2, spaceBetween: 40 },
+          }}
+        >
+          {rooms.map((room) => (
+            <SwiperSlide key={room._id}>
+              <ExecutiveBedsCard room={room} />
+            </SwiperSlide>
+          ))}
+        </StyledSwiper>
+      </div>
+
+      {/* Floating Global CTA */}
+      <Link
+        href="/booking"
+        className="fixed bottom-6 right-6 bg-gradient-to-r from-amber-500 to-yellow-400 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:scale-105 transition-all z-50 backdrop-blur-md"
+      >
+        Book Now
+      </Link>
+    </div>
   );
 }
 
 function ExecutiveBedsCard({ room }) {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      whileInView={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="w-[80%] h-full border mx-auto border-green-900 rounded-lg overflow-hidden"
+      className="relative rounded-2xl overflow-hidden shadow-lg bg-white group hover:shadow-2xl transition-all duration-500"
     >
-      <Image
-        src={room.imageUrl || "/fallback.jpg"}
-        alt={room.name}
-        height={200}
-        width={300}
-        quality={100}
-        className="w-full h-80 object-cover"
-      />
+      {/* Image with Overlay */}
+      <div className="relative h-80">
+        <Image
+          src={room.imageUrl || "/fallback.jpg"}
+          alt={room.name}
+          fill
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent"></div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 m-5 text-gray-900">
-        <div className="col-span-2 flex flex-col justify-between">
-          <h1 className="uppercase text-green-950 mb-4 font-bold">
-            {room.name}
-          </h1>
-          <p className="pb-4 text-xs">{room.description}</p>
+        {/* Floating Price */}
+        <div className="absolute bottom-4 left-4 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-lg shadow-sm">
+          <span className="text-green-900 font-bold text-lg">
+            ${room.price?.toLocaleString() || "N/A"}
+          </span>
+          <span className="text-sm text-gray-700"> / night</span>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="p-6">
+        <h3 className="text-xl font-bold text-green-950 mb-2">{room.name}</h3>
+        <p className="text-gray-700 text-sm leading-relaxed mb-4 line-clamp-3">
+          {room.description}
+        </p>
+
+        <div className="flex flex-wrap gap-3 text-sm text-gray-600 mb-6">
+          <Feature icon={<FaBed />} text={room.roomType} />
+          <Feature icon={<LucideTv2 />} text="Flat Screen TV" />
+          <Feature icon={<FaWifi />} text="Free WiFi" />
+          <Feature icon={<GiFireplace />} text="Fireplace" />
+          <Feature icon={<MdBathtub />} text="Private Bathroom" />
+        </div>
+
+        {/* Button Bar */}
+        <div className="flex gap-3">
           <Link
             href={`/rooms/${room._id}`}
-            className="p-2 text-white bg-green-900 hover:bg-green-800 text-center rounded-lg transition"
+            className="flex-1 py-2 text-center font-semibold rounded-lg border border-green-900 text-green-900 hover:bg-green-900 hover:text-white transition-all"
           >
             View Details
           </Link>
-        </div>
-
-        <div className="col-span-3 text-sm">
-          <h1 className="uppercase mb-4 font-semibold">Facilities</h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-            <div>
-              <div className="flex items-center gap-2">
-                <FaBed /> {room.roomType}
-              </div>
-              <div className="flex items-center gap-2">
-                <LucideTv2 /> Flat Screen TV
-              </div>
-              <div className="flex items-center gap-2">
-                <GiToaster /> Braai Area
-              </div>
-              <div className="flex items-center gap-2">
-                <MdOutlineAirlineSeatReclineExtra /> Sitting Area
-              </div>
-            </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <FaToiletPaper /> Toiletries
-              </div>
-              <div className="flex items-center gap-2">
-                <MdBathtub /> En-Suite Bathroom
-              </div>
-              <div className="flex items-center gap-2">
-                <FaWifi /> Free WiFi
-              </div>
-              <div className="flex items-center gap-2">
-                <GiFireplace /> Fireplace
-              </div>
-            </div>
-          </div>
+          <Link
+            href={`/rooms/${room._id}`}
+            className="flex-1 py-2 text-center font-semibold rounded-lg bg-gradient-to-r from-amber-500 to-yellow-400 text-white hover:scale-105 transition-all"
+          >
+            Book Now
+          </Link>
         </div>
       </div>
     </motion.div>
+  );
+}
+
+function Feature({ icon, text }) {
+  return (
+    <div className="flex items-center gap-2 bg-green-50 px-2 py-1 rounded-full">
+      <span className="text-green-800">{icon}</span>
+      <span>{text}</span>
+    </div>
   );
 }
 

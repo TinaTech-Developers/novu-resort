@@ -21,24 +21,21 @@ export async function POST(request) {
 
   await connectMongoDB();
 
-  // Check for overlapping reservations
+  // Prevent overlapping bookings for same room
   const existingReservations = await Reservations.find({
-    book: book,
+    book,
     $or: [
-      { arrivaldate: { $lte: deptdate }, deptdate: { $gte: arrivaldate } },
-      { arrivaldate: { $gte: arrivaldate }, deptdate: { $lte: deptdate } },
+      {
+        arrivaldate: { $lte: new Date(deptdate) },
+        deptdate: { $gte: new Date(arrivaldate) },
+      },
     ],
   });
 
   if (existingReservations.length > 0) {
     const arrivalDateFormatted = new Date(arrivaldate).toLocaleDateString(
       "en-GB",
-      {
-        weekday: "short",
-        day: "2-digit",
-        month: "short",
-        year: "numeric",
-      }
+      { weekday: "short", day: "2-digit", month: "short", year: "numeric" }
     );
     const deptDateFormatted = new Date(deptdate).toLocaleDateString("en-GB", {
       weekday: "short",
@@ -46,28 +43,20 @@ export async function POST(request) {
       month: "short",
       year: "numeric",
     });
-
-    // Add one day to deptdate
     const nextAvailableDate = new Date(new Date(deptdate).getTime() + 86400000);
     const nextAvailableDateFormatted = nextAvailableDate.toLocaleDateString(
       "en-GB",
-      {
-        weekday: "short",
-        day: "2-digit",
-        month: "short",
-        year: "numeric",
-      }
+      { weekday: "short", day: "2-digit", month: "short", year: "numeric" }
     );
 
     return NextResponse.json(
       {
-        message: `This room is booked from ${arrivalDateFormatted} to ${deptDateFormatted}. You may book from ${nextAvailableDateFormatted} onward if you are flexible.`,
+        message: `This room is already booked from ${arrivalDateFormatted} to ${deptDateFormatted}. You may book from ${nextAvailableDateFormatted} onward.`,
       },
       { status: 400 }
     );
   }
 
-  // Create new reservation
   await Reservations.create({
     fullName,
     surname,
@@ -82,6 +71,7 @@ export async function POST(request) {
     book,
     price,
     total,
+    approved: false, // default
   });
 
   return NextResponse.json({ message: "Reservation Created" }, { status: 201 });
@@ -90,7 +80,7 @@ export async function POST(request) {
 export async function GET() {
   await connectMongoDB();
   const reservations = await Reservations.find();
-  return NextResponse.json({ reservations });
+  return NextResponse.json({ reservations }, { status: 200 });
 }
 
 export async function DELETE(request) {

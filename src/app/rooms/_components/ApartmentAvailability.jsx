@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 
 export default function ApartmentAvailability({ onResults = () => {} }) {
-  // default to no-op function if not provided
   const [form, setForm] = useState({
     fullName: "",
     email: "",
@@ -20,14 +19,24 @@ export default function ApartmentAvailability({ onResults = () => {} }) {
     setLoading(true);
 
     try {
+      // ✅ Fetch available rooms from our updated backend
       const res = await fetch(
-        `/api/rooms/check-availability?checkIn=${form.moveInDate}&checkOut=${form.moveOutDate}`
+        `/api/rooms?checkIn=${form.moveInDate}&checkOut=${form.moveOutDate}`
       );
+
       const data = await res.json();
+
+      if (!res.ok) {
+        console.error("Error:", data.message);
+        onResults([]); // Clear results on error
+        return;
+      }
+
+      // ✅ Backend returns an array of rooms directly
       onResults(data.rooms || []);
     } catch (err) {
-      console.error(err);
-      onResults([]); // still safe now
+      console.error("Error checking availability:", err);
+      onResults([]);
     } finally {
       setLoading(false);
     }
@@ -52,6 +61,7 @@ export default function ApartmentAvailability({ onResults = () => {} }) {
           onChange={handleChange}
           className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700"
         />
+
         <input
           type="email"
           name="email"
@@ -61,11 +71,9 @@ export default function ApartmentAvailability({ onResults = () => {} }) {
           onChange={handleChange}
           className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700"
         />
-        <div className="flex flex-col items-start justify-start">
-          <label className="w-full font-medium text-green-900">
-            Move-In Date
-          </label>
 
+        <div className="flex flex-col">
+          <label className="font-medium text-green-900">Move-In Date</label>
           <input
             type="date"
             name="moveInDate"
@@ -75,10 +83,9 @@ export default function ApartmentAvailability({ onResults = () => {} }) {
             className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700"
           />
         </div>
-        <div className="flex flex-col items-start justify-start">
-          <label className="w-full font-medium text-green-900">
-            Move-Out Date
-          </label>
+
+        <div className="flex flex-col">
+          <label className="font-medium text-green-900">Move-Out Date</label>
           <input
             type="date"
             name="moveOutDate"
@@ -88,10 +95,11 @@ export default function ApartmentAvailability({ onResults = () => {} }) {
             className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700"
           />
         </div>
+
         <button
           type="submit"
           disabled={loading}
-          className="md:col-span-2 mt-8 w-full bg-green-900 text-white font-semibold px-10 py-3 rounded-md hover:bg-green-800 transition"
+          className="md:col-span-2 mt-8 w-full bg-green-900 text-white font-semibold py-3 rounded-md hover:bg-green-800 transition"
         >
           {loading ? "Checking..." : "Check Availability"}
         </button>

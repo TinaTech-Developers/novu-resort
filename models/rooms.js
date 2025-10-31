@@ -1,34 +1,31 @@
 import mongoose, { Schema } from "mongoose";
 
+const bookingSchema = new Schema(
+  {
+    fullName: { type: String, required: true },
+    surname: { type: String },
+    address: { type: String },
+    city: { type: String },
+    country: { type: String },
+    email: { type: String, required: true },
+    adultsNo: { type: Number },
+    kidsNo: { type: Number },
+    checkIn: { type: Date, required: true },
+    checkOut: { type: Date, required: true },
+    total: { type: Number },
+    approved: { type: Boolean, default: false }, // <--- NEW: track approved bookings
+  },
+  { _id: true } // each booking gets its own _id
+);
+
 const roomSchema = new Schema(
   {
-    name: {
-      type: String,
-      required: true,
-    },
-    imageUrl: {
-      type: String,
-      required: true,
-    },
-    description: {
-      type: String,
-      required: true,
-    },
-    roomType: {
-      type: String, // e.g. "two-bed", "executive", "three-bed"
-      required: true,
-    },
-    price: {
-      type: Number, // better stored as Number
-      required: true,
-    },
-    // Optional: track booked dates for availability checks
-    bookings: [
-      {
-        checkIn: { type: Date, required: true },
-        checkOut: { type: Date, required: true },
-      },
-    ],
+    name: { type: String, required: true },
+    imageUrl: { type: String, required: true },
+    description: { type: String, required: true },
+    roomType: { type: String, required: true },
+    price: { type: Number, required: true },
+    bookings: [bookingSchema], // embed bookings
   },
   { timestamps: true }
 );

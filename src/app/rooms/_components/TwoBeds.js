@@ -23,8 +23,7 @@ export default function TwoBeds() {
       try {
         const res = await fetch("/api/rooms?roomType=two-bed");
         const data = await res.json();
-        console.log(data); // Debug
-        setTwoBed(data.rooms || []); // ✅ fixed here
+        setTwoBed(data.rooms || []);
       } catch (error) {
         console.error("Error fetching rooms:", error);
       } finally {
@@ -66,23 +65,39 @@ export default function TwoBeds() {
           </SwiperSlide>
         ))}
       </Swiper>
+
+      {/* Floating global Book Now button */}
+      <Link
+        href="/booking"
+        className="fixed bottom-6 right-6 bg-gradient-to-r from-amber-500 to-yellow-400 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:scale-105 transition-all z-50 backdrop-blur-md"
+      >
+        Book Now
+      </Link>
     </section>
   );
 }
 
 function LuxuryRoomSlide({ room }) {
   return (
-    <div className="relative w-full h-[90vh]">
+    <div className="relative w-full h-[90vh] overflow-hidden">
       {/* Background Image */}
       <Image
         src={room.imageUrl || "/default.jpg"}
         alt={room.name}
         fill
-        className="object-cover brightness-75"
+        className="object-cover brightness-75 transition-transform duration-700 hover:scale-105"
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black/70" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/80" />
+
+      {/* Floating Price Tag */}
+      <div className="absolute top-6 left-6 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-lg shadow-lg">
+        <span className="text-green-900 font-bold text-lg">
+          ${room.price?.toLocaleString() || "N/A"}
+        </span>
+        <span className="text-sm text-gray-700"> / night</span>
+      </div>
 
       {/* Text Content */}
       <motion.div
@@ -91,7 +106,7 @@ function LuxuryRoomSlide({ room }) {
         transition={{ duration: 1 }}
         className="absolute inset-0 flex flex-col justify-center px-8 md:px-20 text-white max-w-2xl"
       >
-        <h2 className="text-3xl md:text-5xl font-bold text-gold-300 mb-4 uppercase tracking-wide">
+        <h2 className="text-3xl md:text-5xl font-bold mb-4 uppercase tracking-wide text-yellow-400 drop-shadow-lg">
           {room.name}
         </h2>
         <p className="text-sm md:text-base text-gray-200 leading-relaxed mb-6">
@@ -126,13 +141,21 @@ function LuxuryRoomSlide({ room }) {
           </div>
         </div>
 
-        {/* Button */}
-        <Link
-          href={`/rooms/${room._id}`}
-          className="bg-green-800 hover:bg-green-700 text-white py-2 px-6 rounded-md text-sm font-medium transition duration-300 w-fit"
-        >
-          View Details
-        </Link>
+        {/* Buttons */}
+        <div className="flex gap-3">
+          <Link
+            href={`/rooms/${room._id}`}
+            className="bg-green-800 hover:bg-green-700 text-white py-2 px-6 rounded-md text-sm font-medium transition duration-300"
+          >
+            View Details
+          </Link>
+          <Link
+            href={`/rooms/${room._id}`}
+            className="bg-gradient-to-r from-amber-500 to-yellow-400 hover:scale-105 transition-all text-white py-2 px-6 rounded-md text-sm font-semibold shadow-lg"
+          >
+            Book Now
+          </Link>
+        </div>
       </motion.div>
     </div>
   );
