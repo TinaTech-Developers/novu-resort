@@ -1,8 +1,7 @@
-import EditRoomDetails from "@/components/EditRoomDetails";
 import Layout from "@/components/Layout";
-import { error } from "console";
 import React from "react";
 import { headers } from "next/headers";
+import EditRoomDetails from "../_components/EditRoomDetails";
 
 const getRoomById = async (id) => {
   const headersList = headers();
@@ -10,7 +9,7 @@ const getRoomById = async (id) => {
   const protocol = host?.includes("localhost") ? "http" : "https";
 
   try {
-    const res = await fetch(`${protocol}://${host}/api/twobed/${id}`, {
+    const res = await fetch(`${protocol}://${host}/api/rooms/${id}`, {
       cache: "no-store",
     });
 

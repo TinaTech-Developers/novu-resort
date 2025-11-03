@@ -46,7 +46,7 @@ export default function TwoBeds() {
     );
 
   return (
-    <section className="relative w-full h-[90vh]">
+    <section className="relative w-full h-[90vh] md:my-20">
       <Swiper
         modules={[Autoplay, Pagination, EffectFade]}
         effect="fade"
@@ -144,13 +144,13 @@ function LuxuryRoomSlide({ room }) {
         {/* Buttons */}
         <div className="flex gap-3">
           <Link
-            href={`/rooms/${room._id}`}
+            href={`/rooms/two-beds/${room._id}`}
             className="bg-green-800 hover:bg-green-700 text-white py-2 px-6 rounded-md text-sm font-medium transition duration-300"
           >
             View Details
           </Link>
           <Link
-            href={`/rooms/${room._id}`}
+            href={`/rooms/two-beds/${room._id}`}
             className="bg-gradient-to-r from-amber-500 to-yellow-400 hover:scale-105 transition-all text-white py-2 px-6 rounded-md text-sm font-semibold shadow-lg"
           >
             Book Now

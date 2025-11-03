@@ -142,13 +142,13 @@ function ExecutiveBedsCard({ room }) {
         {/* Button Bar */}
         <div className="flex gap-3">
           <Link
-            href={`/rooms/${room._id}`}
+            href={`/rooms/executive-beds/${room._id}`}
             className="flex-1 py-2 text-center font-semibold rounded-lg border border-green-900 text-green-900 hover:bg-green-900 hover:text-white transition-all"
           >
             View Details
           </Link>
           <Link
-            href={`/rooms/${room._id}`}
+            href={`/rooms/executive-beds/${room._id}`}
             className="flex-1 py-2 text-center font-semibold rounded-lg bg-gradient-to-r from-amber-500 to-yellow-400 text-white hover:scale-105 transition-all"
           >
             Book Now
