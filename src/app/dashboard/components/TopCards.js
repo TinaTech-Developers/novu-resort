@@ -142,8 +142,8 @@ export default function TopCards() {
           <p className="text-2xl font-bold">${weeklyTotal}</p>
           <p className="text-gray-600">Weekly Revenue</p>
         </div>
-        <p className="bg-amber-200 flex justify-center items-center p-2 rounded-lg">
-          <span className="text-amber-700 text-lg">
+        <p className="bg-green-200 flex justify-center items-center p-2 rounded-lg">
+          <span className="text-green-700 text-lg">
             {((weeklyTotal / total) * 100).toFixed(1)}%
           </span>
         </p>
@@ -153,8 +153,8 @@ export default function TopCards() {
           <p className="text-2xl font-bold">${monthly}</p>
           <p className="text-gray-600">Monthly Revenue</p>
         </div>
-        <p className="bg-amber-200 flex justify-center items-center p-2 rounded-lg">
-          <span className="text-amber-700 text-lg">
+        <p className="bg-green-200 flex justify-center items-center p-2 rounded-lg">
+          <span className="text-green-700 text-lg">
             {((monthly / total) * 100).toFixed(1)}%
           </span>
         </p>
@@ -164,8 +164,8 @@ export default function TopCards() {
           <p className="text-2xl font-bold">${total}</p>
           <p className="text-gray-600">Total Revenue</p>
         </div>
-        <p className="bg-amber-200 flex justify-center items-center p-2 rounded-lg">
-          <span className="text-amber-700 text-lg">+48%</span>
+        <p className="bg-green-200 flex justify-center items-center p-2 rounded-lg">
+          <span className="text-green-700 text-lg">+48%</span>
         </p>
       </div>
     </div>

@@ -13,11 +13,13 @@ function Navbar() {
         { name: "Executive Beds", link: "/rooms/executive-beds" },
         { name: "Two Beds", link: "/rooms/two-beds" },
         { name: "Three Beds", link: "/rooms/three-beds" },
+        { name: "Conference Hall", link: "/rooms/conference-hall" },
       ],
     },
     { name: "Activities", link: "/activities" },
     { name: "About", link: "/about" },
     { name: "Contact", link: "/contact" },
+    { name: "Dining-Options", link: "/dining-options" },
   ];
 
   const [open, setOpen] = useState(false);

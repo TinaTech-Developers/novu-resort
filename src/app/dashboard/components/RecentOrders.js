@@ -24,8 +24,8 @@ export default async function RecentOrders() {
       <h1>Recent Orders</h1>
       <ul>
         <li className="bg-gray-50 hover:bg-gray-100 rounded-lg my-3 p-2 flex items-center cursor-pointer ">
-          <div className="bg-amber-100 rounde-lg p-3">
-            <FaShoppingBag className="text-amber-700" />
+          <div className="bg-green-100 rounde-lg p-3">
+            <FaShoppingBag className="text-green-700" />
           </div>
           <Link href={"/dashboard/orders"}>
             <div className="pl-4">

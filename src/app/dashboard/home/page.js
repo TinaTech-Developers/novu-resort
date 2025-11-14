@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import BarChart from "../components/BarChart";
 import DashbordLayout from "../components/DashbordLayout";
